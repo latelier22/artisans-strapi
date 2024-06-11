@@ -1,7 +1,7 @@
 // MyPage.js
 
 import React from "react";
-import Navbar from "../NavBar";
+import Navbar from "../NavBarClient";
 import Footer from "../Footer";
 import RootLayout from "../layout";
 import HeaderSimple from "../headerSimple";

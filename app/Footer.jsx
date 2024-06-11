@@ -1,14 +1,25 @@
-import fetchSite from "./component/fetchSite"
+"use client"
+import { useEffect } from "react";
+import useMenuStore from './store/useMenuStore'
+import useSiteStore from './store/useSiteStore'
 
-import { menuItems } from "./site";
 import Title from "./TitleLine";
 
+function Footer() {
 
-async function Footer() {
-  
+  const { menuItems, fetchAndSetMenus } = useMenuStore();
+  const { site,fetchAndSetSite} = useSiteStore();
 
-  const site = await fetchSite()
-  
+  useEffect(() => {
+    fetchAndSetSite();
+  }, [fetchAndSetSite]);
+
+  useEffect(() => {
+    fetchAndSetMenus();
+  }, [fetchAndSetMenus]);
+
+  console.log("site",site)
+
   // Définir un tableau d'objets pour les photos du footer
   const photoFooter = [];
 
@@ -28,7 +39,7 @@ async function Footer() {
             >
               <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
             </svg>
-            <p className="pl-4">La page facebook de Ker-Protec !</p>
+            <p className="pl-4">La page facebook de {site.title} !</p>
           </a>
           
         </div>
@@ -65,7 +76,7 @@ async function Footer() {
             <h5 className="mb-2.5 font-bold text-yellow-500 dark:text-neutral-200">
               {/* DEVIS GRATUIT ! */}
             </h5>
-            <img src="images/picto-devis-gratuit.png" className="h-60  " alt="..." />
+            <img src={site.footerImageUrl} className="h-60  " alt="..." />
           </div>
 
           <div className="mb-6">

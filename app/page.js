@@ -3,7 +3,7 @@ import React from "react";
 import RootLayout from "../app/layout";
 import {cards, sections, Pages} from "./site"
 
-import Navbar from "./NavBar";
+import Navbar from "./NavBarClient";
 import HeaderSimple from "./headerSimple";
 import Footer from "./Footer";
 import Cards from "./Cards";
@@ -11,17 +11,16 @@ import Section from "./Section";
 import Title from "./Title"
 import MyLightBox from "./MyLightBox";
 
-import getPages from "./component/getPages"
 import fetchSite from "./component/fetchSite"
-
-
+import fetchPages from"./component/fetchPages"
 
 export async function generateMetadata({ params }, parent) {
   const pageSlug = "accueil"; // Pour tester
   let page = Pages[pageSlug]; // Récupérer la page initiale
-  const apiPage = await getPages(); // Récupérer les données de la page depuis l'API
+  const apiPage = await fetchPages(); // Récupérer les données de la page depuis l'API
 
   const site = await fetchSite()
+
   
   // Vérifier si les données de la page API existent et ne sont pas vides
   if (apiPage && apiPage[pageSlug]) {

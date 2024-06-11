@@ -14,7 +14,7 @@ export let site = {
 };
 
 export const menuItems = [
-  { label: "Accueil", route: "/" },
+  { label: "ACCUEIL", route: "/" },
   { label: "ravalement", route: "/ravalement" },
   { label: "Peinture & décoration", route: "/peinture-decoration" },
   { label: "Nuanciers & marque partenaire", route: "/peinture-nuancier" },

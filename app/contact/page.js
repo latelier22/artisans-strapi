@@ -1,6 +1,6 @@
 
 
-import Navbar from "../NavBar";
+import Navbar from "../NavBarClient";
 import Footer from "../Footer";
 import RootLayout from "../layout";
 import FormContact from "../FormContact";

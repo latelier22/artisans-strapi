@@ -1,9 +1,19 @@
 "use client";
 import { useEffect } from "react";
-import { menuItems, site } from "./site";
 import Title from "./TitleLine";
+import useSiteStore from './store/useSiteStore'
 
 const HeaderSimple = ({ photos, title }) => {
+
+ 
+  const { site,fetchAndSetSite} = useSiteStore();
+
+  useEffect(() => {
+    fetchAndSetSite();
+  }, [fetchAndSetSite]);
+
+
+
   useEffect(() => {
     const init = async () => {
       const { Tooltip, initTE } = await import("tw-elements");
@@ -16,9 +26,9 @@ const HeaderSimple = ({ photos, title }) => {
     <header>
       <div className="text-center text-neutral-200 dark:bg-neutral-900 dark:text-neutral-200">
         <div className="flex flex-col  lg:flex-row first-letter:lg:justify-around  justify-center items-center">
-          <div className="md:block lg:self-start">
+          <div className="md:block lg:self-start mt-24">
             <img
-              src={site.Logo.url}
+              src={site.logoUrl}
               className=" rounded-2xl mx-4  p-4 w-40 lg:w-96 h-auto "
               alt=""
             />
