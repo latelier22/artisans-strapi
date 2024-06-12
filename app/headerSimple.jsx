@@ -1,9 +1,10 @@
 "use client";
+import React from "react";
 import { useEffect } from "react";
 import Title from "./TitleLine";
 import useSiteStore from './store/useSiteStore'
 
-const HeaderSimple = ({ photos, title }) => {
+const HeaderSimple = ({ photos, title, header }) => {
 
  
   const { site,fetchAndSetSite} = useSiteStore();
@@ -22,6 +23,11 @@ const HeaderSimple = ({ photos, title }) => {
     init();
   }, []);
 
+  const grosTitre = header && header.messages && header.messages["gros titre"];
+  const sousTitre = header && header.messages && header.messages["sous-titre"];
+  const zoneItervention = header && header.messages && header.messages["zone intervention"];
+  const grosTitreParts = grosTitre ? grosTitre.split('-') : [];
+
   return (
     <header>
       <div className="text-center text-neutral-200 dark:bg-neutral-900 dark:text-neutral-200">
@@ -33,27 +39,34 @@ const HeaderSimple = ({ photos, title }) => {
               alt=""
             />
             <h3 className=" text-gold-200 text-2xl font-bold">
-            Vannes et ses alentours
+            {zoneItervention ? zoneItervention : site.ville}
               </h3>
            
           </div>
           <div className="flex-col justify-between">
             {/* <h1 className="mb-6 text-gold-600  text-5xl font-bold"> */}
             <h1 className="hidden sm:block font-bold text-transparent mt-8 text-5xl bg-clip-text bg-gradient-to-br from-gold-800 via-gold-400 to-gold-800">
-              <br className=""/>
-              Peinture - Décoration intérieure - Ravalement
-            </h1>
-             <h1 className="sm:hidden font-bold text-transparent mt-8 text-5xl bg-clip-text bg-gradient-to-br from-gold-800 via-gold-400 to-gold-800">
-              <br className=""/>
-              Peinture
-              <br className=""/>
-              Décoration intérieure
-              <br className=""/> Ravalement
-              
-            </h1>
+        <br className="" />
+        {grosTitre ? grosTitre.toUpperCase() : site.title}
+      </h1>
+      <h1 className="sm:hidden font-bold text-transparent mt-8 text-5xl bg-clip-text bg-gradient-to-br from-gold-800 via-gold-400 to-gold-800">
+        <br className="" />
+        {grosTitreParts.length > 0 ? (
+          grosTitreParts.map((part, index) => (
+            <React.Fragment key={index}>
+              {part}
+              {index < grosTitreParts.length - 1 && <br />}
+            </React.Fragment>
+          ))
+        ) : (
+          <>
+           
+          </>
+        )}
+      </h1>
             <div className="flex flex-col  justify-around items-center">
               <h3 className="my-8 text-gold-200 text-3xl font-bold">
-              Donner de la couleur à vôtre intérieur
+              {sousTitre ? sousTitre : site.www}
               </h3>
               <a
                 className="md:self-stop rounded-2xl h-16 bg-black px-6  py-3 text-2xl font-medium uppercase leading-normal text-gold-200 shadow-[0_4px_9px_-4px_#FFB200] transition duration-150 ease-in-out hover:text-black hover:bg-gold-500 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-gold-200 focus:shadow-[0_8px_9px_-4px_rgba(59,113,0,0.3),0_4px_18px_0_rgba(59,113,0,0.2)] focus:text-gold-500 focus:outline-none focus:ring-0 active:bg-lime-100 active:shadow-[0_8px_9px_-4px_rgba(59,113,0,0.3),0_4px_18px_0_rgba(59,113,0,0.2)]"

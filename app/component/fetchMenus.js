@@ -18,6 +18,7 @@ async function fetchMenus() {
     return menu
   });
 
+  console.log("menus",menus)
   return menus;
 }
 export default fetchMenus;

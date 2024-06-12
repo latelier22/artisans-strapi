@@ -1,7 +1,14 @@
 "use client";
 import { useEffect } from "react";
+import Link from "next/link";
 import useMenuStore from './store/useMenuStore'
 import useSiteStore from './store/useSiteStore'
+
+import Dropdown from "./DropDown";
+
+
+import { Eye, Star, Htag, Pen, Heart, ZoomIn, ZoomOut, Trash } from "./component/album/icons";
+
 
 const NavbarClient = () => {
 
@@ -14,7 +21,13 @@ const NavbarClient = () => {
 
   useEffect(() => {
     fetchAndSetMenus();
+    
   }, [fetchAndSetMenus]);
+
+  useEffect(() => {
+    console.log('menuItems:', menuItems);
+  }, [menuItems]);
+
 
 
   useEffect(() => {
@@ -25,7 +38,19 @@ const NavbarClient = () => {
     init();
   }, []);
 
+   // Séparer l'item ADMIN des autres items de menu
+ const regularMenuItems = menuItems.filter(item => item.route !== '/admin');
+ const adminMenuItem = menuItems.find(item => (item.route === '/admin') || (item.route === '/catalogue/non-publiees') );
 
+ const getIconForRoute = (route) => {
+  if (route.includes("favoris")) {
+    return <Heart isOpen ={true} className="mr-2" />;
+  }
+  if (route.includes("recents")) {
+    return <Star isOpen ={true} className="mr-2" />;
+  }
+  return null;
+};
 
   return (
     <>
@@ -71,33 +96,26 @@ const NavbarClient = () => {
           id="navbarSupportedContentY"
           data-te-collapse-item
         >
-          <ul
-            className="mx-auto flex flex-col lg:flex-row"
-            data-te-navbar-nav-ref
-          >
-
-            {/* Utiliser une boucle pour générer les éléments de la navbar */}
-            {menuItems.map((menuItem, index) => (
-              <li
-                key={index}
-                className={`${index > 0 ? "mb-2 " : ""}lg:mb-0 lg:pr-2`}
-                data-te-nav-item-ref
-              >
-                <a
-                  className={`block transition duration-150 ease-in-out hover:text-gold-800 focus:text-gold-500 disabled:text-black/30 dark:text-gold-200 dark:hover:text-gold-800 dark:focus:text-gold-500 lg:p-2 [&.active]:text-black/90`}
-                  href={menuItem.route}
-                  data-te-nav-link-ref
-                  data-te-ripple-init
-                  data-te-ripple-color="light"
-                >
-                  {menuItem.label}
-                </a>
-              </li>
-            ))}
-
-
-
-          </ul>
+      <ul className="mx-auto flex flex-col lg:flex-row" data-te-navbar-nav-ref>
+              {regularMenuItems.map((menuItem) => (
+                <li key={menuItem.id} className={`lg:mb-0 lg:pr-2`} data-te-nav-item-ref>
+                  {menuItem.children && menuItem.children.length ? (
+                    <Dropdown className="" item={menuItem} />
+                  ) : (
+                    <a
+                      className={`font-lien  flex flex-row transition duration-150 text-black ease-in-out hover:text-gold-800 focus:text-gold-500 disabled:text-black/30 dark:text-gold-200 dark:hover:text-gold-800 dark:focus:text-gold-500 lg:p-2 [&.active]:text-black/90`}
+                      href={menuItem.route}
+                      data-te-nav-link-ref
+                      data-te-ripple-init
+                      data-te-ripple-color="light"
+                    >
+                      {getIconForRoute(menuItem.route)}
+                      {menuItem.label}
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
         </div>
         <div className="flex ml-10 md:ml-0 flex-row items-center self:justify-end">
         <a href="https://www.facebook.com/profile.php?id=61556209084036" className="text-sky-300 dark:text-sky-300">

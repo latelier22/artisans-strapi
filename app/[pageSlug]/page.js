@@ -1,74 +1,72 @@
 // MyPage.js
 
 import React from "react";
-import Navbar from "../NavBarClient";
+import NavbarClient from "../NavBarClient"; // Ensure the correct import
 import Footer from "../Footer";
 import RootLayout from "../layout";
 import HeaderSimple from "../headerSimple";
 import Section from "../Section";
 import Cards from "../Cards";
-import MyLightBox from "../MyLightBox"
+import MyLightBox from "../MyLightBox";
 import { Pages, site } from "../site";
-import getPages from "./../component/getPages"
+import getPages from "./../component/getPages";
+import fetchPages from "../component/fetchPages";
+import fetchFooter from "../component/fetchFooter";
+import fetchHeader from"../component/fetchHeader";
 
+// Metadata generation function to handle missing page data
+// Metadata generation function to handle missing page data
 export async function generateMetadata({ params }, parent) {
   const pageSlug = params.pageSlug;
-  let page = Pages[pageSlug]; // Récupérer la page initiale
-  const apiPage = await getPages(); // Récupérer les données de la page depuis l'API
-  
-  // Vérifier si les données de la page API existent et ne sont pas vides
-  if (apiPage && apiPage[pageSlug]) {
-    const apiPageData = apiPage[pageSlug]; // Données de la page depuis l'API
-    
-    // Parcourir chaque clé de la page initiale
-    for (const key in page) {
-      // Vérifier si la clé existe dans les données de la page API et si sa valeur n'est pas vide
-      if (apiPageData[key] && apiPageData[key].trim() !== "") {
-        // Remplacer la valeur de la page initiale par la valeur de la page API
-        page[key] = apiPageData[key];
-      }
-    }
+  let page = Pages[pageSlug]; // Initial page data from static source
+  const apiPage = await fetchPages(pageSlug); // Fetch page data from the API
+  console.log("apiPage = await fetchPages(pageSlug)",apiPage)
+
+  // If no data from API, use default values
+  if (!apiPage) {
+    page = { title: "Page en cours de construction", description: "", tags: "" };
+  } else {
+    // Update initial page data with API data if available
+    page = { ...page, ...apiPage };
   }
-  
+
   return {
-    title: `${page.title} | ${site.title}`, // Retourner le titre mis à jour
-    keywords : page.tags ? page.tags.split(',').map(tag => tag.trim()) : [] ,
-    description : page.description ? page.description : ""
+    title: `${page.title} | ${site.title}`, // Updated title
+    keywords: page.tags ? page.tags.split(',').map(tag => tag.trim()) : [],
+    description: page.description ? page.description : ""
   };
 }
 
-const MyPage = ({ params }) => {
+
+async function MyPage({ params }) {
   const pageSlug = params.pageSlug;
-  const page = Pages[pageSlug];
+  const page = await fetchPages(pageSlug);
+  const footer = await fetchFooter();
+  const header = await fetchHeader();
+
+console.log(page, header)
   if (!page) {
     return (
-      <RootLayout >
+      <RootLayout>
         <div className="min-h-screen flex flex-col justify-center items-center">
-          <h1>Page non trouvée</h1>
+          <h1>Page {pageSlug} en cours de construction</h1>
         </div>
       </RootLayout>
     );
   }
+
   return (
     <RootLayout pageTitle={page.title} pageDescription={page.description} pageTags={page.tags}>
-
-      <Navbar />
-
-      <HeaderSimple photos={page.photos} title={page.title}/>
-
-      {/* <ImagesBar photos={page.photos} /> */}
-      <MyLightBox photos={page.photos} />
-
+      <NavbarClient />
+      <HeaderSimple photos={page.photos} title={page.title} header={header}/>
+      {/* <MyLightBox photos={page.photos} />
       {page.sections.map((section, index) => (
         <Section key={index} section={section} />
       ))}
-     
-
       <div className="">
-        <Cards cards={page.cards}  />
-      </div>
-
-      <Footer />
+        <Cards cards={page.cards} />
+      </div> */}
+      <Footer footer = {footer}/> 
     </RootLayout>
   );
 };

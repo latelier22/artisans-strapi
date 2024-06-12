@@ -1,14 +1,13 @@
-"use client"
+"use client";
 import { useEffect } from "react";
-import useMenuStore from './store/useMenuStore'
-import useSiteStore from './store/useSiteStore'
+import useMenuStore from "./store/useMenuStore";
+import useSiteStore from "./store/useSiteStore";
 
 import Title from "./TitleLine";
 
-function Footer() {
-
+function Footer({footer}) {
   const { menuItems, fetchAndSetMenus } = useMenuStore();
-  const { site,fetchAndSetSite} = useSiteStore();
+  const { site, fetchAndSetSite } = useSiteStore();
 
   useEffect(() => {
     fetchAndSetSite();
@@ -18,7 +17,7 @@ function Footer() {
     fetchAndSetMenus();
   }, [fetchAndSetMenus]);
 
-  console.log("site",site)
+  console.log("footer", footer);
 
   // Définir un tableau d'objets pour les photos du footer
   const photoFooter = [];
@@ -30,7 +29,10 @@ function Footer() {
           <span>Restons en contact sur les réseaux sociaux</span>
         </div>
         <div className="flex justify-center items-center">
-          <a href="https://www.facebook.com/profile.php?id=61556209084036" className="flex flex-row mr-6 text-sky-300 dark:text-neutral-200">
+          <a
+            href="https://www.facebook.com/profile.php?id=61556209084036"
+            className="flex flex-row mr-6 text-sky-300 dark:text-neutral-200"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4"
@@ -41,17 +43,19 @@ function Footer() {
             </svg>
             <p className="pl-4">La page facebook de {site.title} !</p>
           </a>
-          
         </div>
       </div>
 
       <div className="mx-6 pt-8 pb-4 text-center">
         <div className="mb-6">
-          <Title title = "Besoin d'un travail de peinture de qualité ?" />
-          <p className="mb-4 text-white">Contactez-nous!</p>
+          <Title title= {footer && footer.messages && footer.messages["title"] 
+          ? footer.messages["title"] 
+          : "Contactez nous !"}/>
           <p className="mb-4 text-white">
-            Nous intervenons tout autour de Vannes, dans les délais les plus brefs
-          </p>
+        {footer && footer.messages && footer.messages["intervention"] 
+          ? footer.messages["intervention"] 
+          : "No intervention message available"}
+      </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 mb-4">
@@ -64,10 +68,12 @@ function Footer() {
               <li>{site.societe}</li>
               <li>{site.contact}</li>
               <li>{site.adresse}</li>
-              <li>{site.codePostal} {site.ville}</li>
+              <li>
+                {site.codePostal} {site.ville}
+              </li>
               <li>{site.telephone}</li>
               <li>{site.email}</li>
-              <br/>
+              <br />
               <li className=" text-gold-800">N° de SIRET {site.SIRET}</li>
             </ul>
           </div>
@@ -135,6 +141,6 @@ function Footer() {
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;

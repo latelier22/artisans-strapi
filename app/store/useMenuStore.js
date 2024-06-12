@@ -1,5 +1,6 @@
 import { create } from 'zustand';
-import myFetch from "../component/myFetch"
+import fetchMenus from "../component/fetchMenus";
+
 const useMenuStore = create((set) => ({
   menuItems: [],
 
@@ -11,20 +12,58 @@ const useMenuStore = create((set) => ({
   // Récupérer et définir les menus depuis l'API
   fetchAndSetMenus: async () => {
     try {
-      const channel = process.env.NEXT_PUBLIC_STRAPI_CHANNEL; // Utilisez NEXT_PUBLIC pour les variables d'environnement accessibles dans le frontend
-      const endpoint = `/api/menus?populate=*&filters[channels][name][$eq]=${channel}`;
-      const response = await myFetch(endpoint, 'GET', null, 'menus');
-      const { data } = response;
+      const response = await fetchMenus();
+      let menuItems = response;
 
-      // Transformez les données en un format approprié
-      const menus = data.map((item) => ({
-        id: item.id,
-        ...item.attributes,
-      }));
+      // Fonction récursive pour transformer les données et ajouter les parents
+      const transformMenuItem = (item) => {
+        return {
+          id: item.id,
+          label: item.label,
+          route: item.route,
+          order: item.order,
+          children: Array.isArray(item.children?.data) ? item.children.data.map(transformMenuItem) : [],
+          parent: item.parent?.data?.length > 0 ? item.parent.data[0].id : null
+        };
+      };
 
-      console.log("menus",menus)
-      // Mettez à jour le store avec les menus récupérés
-      set({ menuItems: menus });
+      // Appliquer la transformation aux données du menu
+      menuItems = menuItems.map(transformMenuItem);
+
+      // Créer une map des éléments de menu par ID pour faciliter l'assignation des enfants aux parents
+      const menuMap = {};
+      menuItems.forEach(item => {
+        menuMap[item.id] = item;
+      });
+
+      // Réassigner les enfants aux parents dans la structure de menu
+      menuItems.forEach(item => {
+        if (item.parent) {
+          const parent = menuMap[item.parent];
+          if (parent) {
+            parent.children = parent.children || [];
+            parent.children.push(item);
+          }
+        }
+      });
+
+      // Filtrer les éléments de menu pour ne garder que ceux sans parent
+      const rootMenuItems = menuItems.filter(item => !item.parent);
+
+      // Trier les éléments de menu par le champ "order"
+      const sortChildren = (items) => {
+        items.forEach(item => {
+          if (item.children) {
+            item.children.sort((a, b) => (a.order || 0) - (b.order || 0));
+            sortChildren(item.children);
+          }
+        });
+      };
+
+      rootMenuItems.sort((a, b) => (a.order || 0) - (b.order || 0));
+      sortChildren(rootMenuItems);
+
+      set({ menuItems: rootMenuItems });
     } catch (error) {
       console.error('Failed to fetch menus:', error);
     }
