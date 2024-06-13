@@ -1,20 +1,20 @@
+// fetchFiles.js
 import myFetch from "./myFetch";
 
+async function fetchFiles(fileType = 'all') {
+  const response = await myFetch("/api/upload/files", 'GET', null, 'json');
+  const strapiFiles = response;
 
-async function fetchFiles () {
+  let files;
+  if (fileType === 'image') {
+    files = strapiFiles.filter(file => file.mime.startsWith('image/'));
+  } else if (fileType === 'video') {
+    files = strapiFiles.filter(file => file.mime.startsWith('video/'));
+  } else {
+    files = strapiFiles; // No filter for 'all', return everything
+  }
 
-    const response = await myFetch("/api/upload/files", 'GET', null, 'files');
-
-
-        const strapiFiles = response;
-     
-        const files = strapiFiles;
-       
-
-    return files
-
+  return files;
 }
 
 export default fetchFiles;
-
-
