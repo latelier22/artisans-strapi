@@ -1,13 +1,36 @@
 {
-  "name": "couvreur-loudeac",
+  "name": "@latelier22/artisans-strapi",
   "version": "0.1.0",
-  "private": true,
+  "description": "A Next.js project with reusable components and functions",
+  "main": "index.js",
+  "private": false,
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "publish:npm": "rm -rf dist && mkdir dist &&  babel app -d dist --copy-files"
   },
+  "keywords": [
+    "nextjs",
+    "components",
+    "functions"
+  ],
+  "author": "Cyrille LE CORRE",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/latelier22/artisans-strapi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/latelier22/artisans-strapi/issues"
+  },
+  "homepage": "https://github.com/latelier22/artisans-strapi#readme",
   "dependencies": {
     "@material-tailwind/react": "^2.1.7",
     "@sendgrid/mail": "^8.1.0",
@@ -23,6 +46,8 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.24.7",
+    "@babel/preset-react": "^7.24.7",
     "@types/node": "20.11.8",
     "@types/react": "18.2.48",
     "autoprefixer": "^10.4.16",
