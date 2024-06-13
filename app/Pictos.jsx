@@ -1,3 +1,4 @@
+import React from "react";
 import ImagesBar from "./ImagesBar";
 
 const myComponent = () => {
