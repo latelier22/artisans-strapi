@@ -1,6 +1,7 @@
 "use client";
+import React from "react";
 import { useEffect } from "react";
-import Card from '@latelier22/artisans-strapi/app' ;
+import {Card} from '@latelier22/artisans-strapi/dist' ;
 
 const Cards = ({ cards, buttonColor , syliusCard}) => {
   useEffect(() => {
