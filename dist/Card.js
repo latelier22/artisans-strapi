@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import { useEffect } from "react";
 import MyModal from "./MyModal";
 const Card = ({
