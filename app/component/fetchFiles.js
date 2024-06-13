@@ -18,3 +18,11 @@ async function fetchFiles(fileType = 'all') {
 }
 
 export default fetchFiles;
+
+export function transformResponse(response) {
+  return response.map(file => ({
+    src: `http://vps.latelier22.fr:1336${file.url}`,
+    width: file.width,
+    height: file.height
+  }));
+}

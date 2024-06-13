@@ -6,3 +6,4 @@ import Gallery from './dist/component/gallery/Gallery'
 
 export {Card, Gallery}
 
+import { fetchFiles } from "./dist/component/fetchFiles"

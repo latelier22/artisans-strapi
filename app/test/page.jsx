@@ -1,16 +1,10 @@
 import React from "react";
 import Gallery from "../component/gallery/Gallery"
 // import photos from "../component/gallery/photos";
-import fetchFiles from "../component/fetchFiles"
+import fetchFiles, {transformResponse} from "../component/fetchFiles"
 
 
-function transformResponse(response) {
-    return response.map(file => ({
-      src: `http://vps.latelier22.fr:1336${file.url}`,
-      width: file.width,
-      height: file.height
-    }));
-}
+
 
 async function Test () {
 
