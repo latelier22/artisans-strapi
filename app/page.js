@@ -1,5 +1,4 @@
 import React from "react";
-
 import RootLayout from "../app/layout";
 import {cards, sections, Pages} from "./site"
 

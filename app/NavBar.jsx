@@ -1,4 +1,4 @@
-
+import React from "react";
 import NavbarClient from "./NavBarClient";
 
 async function NavBar() {

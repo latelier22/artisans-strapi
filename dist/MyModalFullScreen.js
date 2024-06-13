@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
+import { useEffect } from "react";
 const MyModalFullScreen = ({
   index,
   image,
