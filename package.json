@@ -1,6 +1,6 @@
 {
   "name": "@latelier22/artisans-strapi",
-  "version": "0.1.6",
+  "version": "0.1.11",
   "description": "A Next.js project with reusable components and functions",
   "main": "index.js",
   "private": false,
@@ -41,8 +41,10 @@
     "react-dom": "^18",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.49.3",
+    "react-photo-album": "^2.4.0",
     "react-side-effect": "^2.1.2",
     "tw-elements": "^1.1.0",
+    "yet-another-react-lightbox": "^3.19.0",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
