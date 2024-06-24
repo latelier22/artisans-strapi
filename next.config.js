@@ -2,7 +2,7 @@
 
 const nextConfig = {
     images: {
-      domains: ['vps.latelier22.fr','assets.react-photo-album.com', 'placehold.co'],
+      domains: ['artisans.latelier22.fr','vps.latelier22.fr','assets.react-photo-album.com', 'placehold.co'],
     },
   };
   
