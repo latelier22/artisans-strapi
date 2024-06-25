@@ -60,6 +60,7 @@ async function Home() {
   const pageTitle = page.title;
   const pageDescription = page.description;
 
+  console.log("photos",apiPage)
     // Récupération des photos correctement avec id et attributes
     const photos = apiPage && apiPage.photos ? apiPage.photos.data.map(photo => ({ id: photo.id, ...photo.attributes })) : page.photos;
   const backgroundColor = "bg-teal-500";
@@ -70,7 +71,7 @@ async function Home() {
   return (
     <RootLayout pageTitle={pageTitle} pageDescription={pageDescription} pageTags={page.tags}>
       <Navbar />
-      <HeaderSimple photos={photos} title={"Page d'accueil"} header={header}/>
+      <HeaderSimple  title={"Page d'accueil"} header={header}/>
       
       <Title title="Dernières réalisations" />
       {photos ? <MyLightBox photos={photos} nombre={4}/> : null}
