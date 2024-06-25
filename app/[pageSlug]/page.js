@@ -62,7 +62,10 @@ console.log(page.block)
       <HeaderSimple photos={page.photos} title={page.title} header={header}/>
 
       {page.block.length > 0 && (
-        <BlockRendererClient content={page.block} />
+       <div className="pt-12 container mx-auto prose ">
+          <BlockRendererClient content={page.block} />
+
+       </div>
       )}
       {/* <MyLightBox photos={page.photos} />
       {page.sections.map((section, index) => (

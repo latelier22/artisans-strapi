@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/Image";
+import Image from "next/image";
 
 import {
   BlocksRenderer
@@ -17,7 +17,7 @@ export default function BlockRendererClient({
         image: ({ image }) => {
           console.log(image);
           return (
-            <div className="md:w-1/3">
+            
 
             <Image
               src={image.url}
@@ -25,7 +25,7 @@ export default function BlockRendererClient({
               height={image.height}
               alt={image.alternativeText || ""}
               />
-              </div>
+              
           );
         },
       }}

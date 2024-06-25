@@ -30,7 +30,7 @@ const HeaderSimple = ({ photos, title, header }) => {
 
   return (
     <header>
-      <div className="text-center text-neutral-200 dark:bg-neutral-900 dark:text-neutral-200">
+      <div className="pt-32 text-center text-neutral-200 dark:bg-neutral-900 dark:text-neutral-200">
         <div className="flex flex-col  lg:flex-row first-letter:lg:justify-around  justify-center items-center">
           <div className="md:block lg:self-start mt-24">
             <img

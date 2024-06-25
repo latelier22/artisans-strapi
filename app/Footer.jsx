@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect } from "react";
 import useMenuStore from "./store/useMenuStore";
 import useSiteStore from "./store/useSiteStore";
-import Image from "next/Image"
+import Image from "next/image";
 
 import Title from "./TitleLine";
 

@@ -12,13 +12,18 @@ import MyLightBox from "./MyLightBox";
 
 import fetchSite from "./component/fetchSite"
 import fetchPages from"./component/fetchPages"
+import fetchFooter from "./component/fetchFooter";
+import fetchHeader from "./component/fetchHeader";
+
 
 export async function generateMetadata({ params }, parent) {
   const pageSlug = "accueil"; // Pour tester
   let page = Pages[pageSlug]; // Récupérer la page initiale
   const apiPage = await fetchPages(); // Récupérer les données de la page depuis l'API
 
-  const site = await fetchSite()
+
+    const site = await fetchSite()
+   
 
   
   // Vérifier si les données de la page API existent et ne sont pas vides
@@ -61,13 +66,17 @@ async function Home () {
 
   const backgroundColor = "bg-teal-500";
 
+  const footer = await fetchFooter();
+   
+    const header = await fetchHeader();
+
 
 
 
   return (
     <RootLayout pageTitle={pageTitle} pageDescription={pageDescription} pageTags={page.tags}>
       <Navbar />
-      <HeaderSimple photos={photos} title={"Page d'accueil"}/>
+      <HeaderSimple photos={photos} title={"Page d'accueil"} header={header}/>
       
       <Title title="Dernières réalisations" />
       <MyLightBox photos={page.photos} nombre={4}/>
@@ -82,7 +91,7 @@ async function Home () {
 
       <Section section={sections[1]} />
       
-      <Footer />
+      <Footer footer={footer} />
     </RootLayout>
   );
 };

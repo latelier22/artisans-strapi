@@ -10,6 +10,7 @@
     ]
   },
   "scripts": {
+    "prebuild": "node scripts/fetchGlobalCss.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -35,6 +36,7 @@
     "@material-tailwind/react": "^2.1.7",
     "@sendgrid/mail": "^8.1.0",
     "@strapi/blocks-react-renderer": "^1.0.1",
+    "dotenv": "^16.4.5",
     "next": "14.0.4",
     "pnpm": "^8.14.3",
     "prop-types": "^15.8.1",
@@ -51,6 +53,7 @@
   "devDependencies": {
     "@babel/cli": "^7.24.7",
     "@babel/preset-react": "^7.24.7",
+    "@tailwindcss/typography": "^0.5.13",
     "@types/node": "20.11.8",
     "@types/react": "18.2.48",
     "autoprefixer": "^10.4.16",
