@@ -105,6 +105,7 @@ watcher
     try {
       const styleId = await fetchStyleId();
       await uploadGlobalCss(styleId);
+      await fetchGlobalCss();
     } catch (error) {
       console.error('Error in watcher:', error);
     }
@@ -113,3 +114,28 @@ watcher
 
 console.log('Watching for changes in global-strapi.css...');
 
+
+async function fetchGlobalCss() {
+    const channel = process.env.NEXT_PUBLIC_STRAPI_CHANNEL;
+    const apiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
+  
+    if (!apiUrl || !channel) {
+      throw new Error('NEXT_PUBLIC_STRAPI_URL or NEXT_PUBLIC_STRAPI_CHANNEL environment variable is not set');
+    }
+  
+    try {
+      let url = `/api/styles?populate=*&filters[channels][name][$eq]=${channel}`;
+      const response = await myFetch(url, 'GET', null, 'styles');
+      const cssContent = response.data?.[0]?.attributes?.globalCss;
+  
+      if (!cssContent) {
+        throw new Error('No CSS content found for the specified channel in the API response');
+      }
+  
+      const filePath = path.resolve(__dirname, '../app/globals.css');
+      fs.writeFileSync(filePath, cssContent, 'utf8');
+      console.log('Global CSS fetched and saved successfully.');
+    } catch (error) {
+      console.error('Error fetching global CSS:', error);
+    }
+  }
