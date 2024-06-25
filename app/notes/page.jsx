@@ -1,6 +1,6 @@
 import React from "react";
 import fetchNotes from "../component/fetchNotes";
-import BlockRendererClient from "./BlockRendererClient";
+import BlockRendererClient from "../component/BlockRendererClient";
 import Navbar from "../NavBarClient";
 import Footer from "../Footer";
 

@@ -3,6 +3,7 @@ import React from "react";
 import { useEffect } from "react";
 import useMenuStore from "./store/useMenuStore";
 import useSiteStore from "./store/useSiteStore";
+import Image from "next/Image"
 
 import Title from "./TitleLine";
 
@@ -83,7 +84,9 @@ function Footer({footer}) {
             <h5 className="mb-2.5 font-bold text-yellow-500 dark:text-neutral-200">
               {/* DEVIS GRATUIT ! */}
             </h5>
-            <img src={site.footerImageUrl} className="h-60  " alt="..." />
+            <div className="h-60">
+            <Image src={site.footerImageUrl} width={200} height={200} alt="..." />
+            </div>
           </div>
 
           <div className="mb-6">

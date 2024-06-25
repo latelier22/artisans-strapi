@@ -13,6 +13,7 @@ import getPages from "./../component/getPages";
 import fetchPages from "../component/fetchPages";
 import fetchFooter from "../component/fetchFooter";
 import fetchHeader from"../component/fetchHeader";
+import BlockRendererClient from "../component/BlockRendererClient";
 
 // Metadata generation function to handle missing page data
 // Metadata generation function to handle missing page data
@@ -44,7 +45,7 @@ async function MyPage({ params }) {
   const footer = await fetchFooter();
   const header = await fetchHeader();
 
-console.log(page, header)
+console.log(page.block)
   if (!page) {
     return (
       <RootLayout>
@@ -59,6 +60,10 @@ console.log(page, header)
     <RootLayout pageTitle={page.title} pageDescription={page.description} pageTags={page.tags}>
       <NavbarClient />
       <HeaderSimple photos={page.photos} title={page.title} header={header}/>
+
+      {page.block.length > 0 && (
+        <BlockRendererClient content={page.block} />
+      )}
       {/* <MyLightBox photos={page.photos} />
       {page.sections.map((section, index) => (
         <Section key={index} section={section} />
