@@ -81,3 +81,7 @@ section h2{
   @apply text-amber-400 font-poppins italic
 }
 
+section p,li{
+  @apply text-amber-200 font-poppins text-xl
+}
+

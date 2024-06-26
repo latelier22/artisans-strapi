@@ -20,7 +20,6 @@ export async function generateMetadata({ params }, parent) {
   let page = Pages[pageSlug]; // Récupérer la page initiale
   const apiPage = await fetchPages(pageSlug); // Récupérer les données de la page depuis l'API
 
-  console.log("page", apiPage);
   const site = await fetchSite();
   
   // Vérifier si les données de la page API existent et ne sont pas vides
@@ -39,9 +38,6 @@ export async function generateMetadata({ params }, parent) {
       }
     }
   }
-
-  console.log("page.title ", page.title);
-  console.log("site.title", site.title);
   
   return {
     title: `${page.title} | ${site.title}`, // Retourner le titre mis à jour
@@ -60,7 +56,6 @@ async function Home() {
   const pageTitle = page.title;
   const pageDescription = page.description;
 
-  console.log("photos",apiPage)
     // Récupération des photos correctement avec id et attributes
     const photos = apiPage && apiPage.photos ? apiPage.photos.data.map(photo => ({ id: photo.id, ...photo.attributes })) : page.photos;
   const backgroundColor = "bg-teal-500";
@@ -76,13 +71,13 @@ async function Home() {
       <Title title="Dernières réalisations" />
       {photos ? <MyLightBox photos={photos} nombre={4}/> : null}
 
-      <Section section={sections[0]} />
+      <Section section={page.section.length > 0 ? page.section[0] : sections[0]} />
 
       <div className="bg-white dark:bg-neutral-900 dark:text-gold-500">
         <Cards cards={cards} buttonColor={backgroundColor} />
       </div>
 
-      <Section section={sections[1]} />
+      <Section section={page.section.length > 1 ? page.section[1] : sections[1]} />
       
       <Footer footer={footer} />
     </RootLayout>

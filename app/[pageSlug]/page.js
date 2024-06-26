@@ -45,7 +45,7 @@ async function MyPage({ params }) {
   const footer = await fetchFooter();
   const header = await fetchHeader();
 
-console.log(page.block)
+// console.log(page.block)
   if (!page) {
     return (
       <RootLayout>
