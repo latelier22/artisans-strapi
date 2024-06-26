@@ -3,7 +3,7 @@ import sgMail from "@sendgrid/mail";
 
 export async function POST(request) {
   
-    const { prenom, nom, contenu, email } = await request.json();
+    const { prenom, nom, contenu, email, contactEmail } = await request.json();
 
 	if (!prenom || !nom || !email || !contenu) {
 		
@@ -29,8 +29,8 @@ export async function POST(request) {
   
    // CrÃ©ation du message
 	const sendGridMail = {
-		to: "contact@ker-protec.fr",
-		from: "contact@ker-protec.fr",
+		to: contactEmail,
+		from: contactEmail,
 		templateId: "d-ce48ad5a6f0443aea3397551ddb25906",
 		dynamic_template_data: {
 			prenom: prenom,
