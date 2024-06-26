@@ -53,7 +53,6 @@ async function MyPage({ params }) {
   const footer = await fetchFooter();
   const header = await fetchHeader();
 
-// console.log(page.block)
   if (!page) {
     return (
     <main>
@@ -72,7 +71,7 @@ async function MyPage({ params }) {
       <HeaderSimple photos={page.photos} title={page.title} header={header}/>
 
       {page.block.length > 0 && (
-        <div className="pt-12 container mx-auto prose ">
+        <div className="pt-12 px-2 container mx-auto prose ">
           <BlockRendererClient content={page.block} />
 
        </div>

@@ -27,7 +27,6 @@ const NavbarClient = () => {
   }, [fetchAndSetMenus]);
 
   useEffect(() => {
-    console.log('menuItems:', menuItems);
   }, [menuItems]);
 
 
@@ -61,12 +60,16 @@ const NavbarClient = () => {
       data-te-navbar-ref
     >
       <div className="flex w-full  items-center  px-3">
-        <a href="/" className="ml-2">
-          <Image src={site.logoUrl}
-           width={48}
-           height={48}
-           alt="Accueil" />
-        </a>
+      <a href="/" className="ml-2 w-8 h-auto">
+            {site.logoUrl && (
+              <Image
+                src={site.logoUrl}
+                width={48}
+                height={48}
+                alt="Accueil"
+              />
+            )}
+          </a>
         <div className="flex items-center">
           <button
             className="border-0 bg-transparent px-2 text-xl leading-none transition-shadow duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:hidden"

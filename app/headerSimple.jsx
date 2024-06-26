@@ -1,19 +1,15 @@
 "use client";
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
+import Image from "next/image";
 import Title from "./TitleLine";
-import useSiteStore from './store/useSiteStore'
+import useSiteStore from './store/useSiteStore';
 
 const HeaderSimple = ({ photos, title, header }) => {
-
- 
-  const { site,fetchAndSetSite} = useSiteStore();
+  const { site, fetchAndSetSite } = useSiteStore();
 
   useEffect(() => {
     fetchAndSetSite();
   }, [fetchAndSetSite]);
-
-
 
   useEffect(() => {
     const init = async () => {
@@ -25,51 +21,54 @@ const HeaderSimple = ({ photos, title, header }) => {
 
   const grosTitre = header && header.messages && header.messages["gros titre"];
   const sousTitre = header && header.messages && header.messages["sous-titre"];
-  const zoneItervention = header && header.messages && header.messages["zone intervention"];
+  const zoneIntervention = header && header.messages && header.messages["zone intervention"];
   const grosTitreParts = grosTitre ? grosTitre.split('-') : [];
 
   return (
     <header>
-      <div className="md:pt-32 text-center text-neutral-200 dark:bg-neutral-900 dark:text-neutral-200">
-        <div className="flex flex-col  lg:flex-row  lg:justify-around  justify-start items-center">
+      <div className="md:pt-32 px-2 text-center text-neutral-200 dark:bg-neutral-900 dark:text-neutral-200">
+        <div className="flex flex-col lg:flex-row lg:justify-around justify-start items-center">
           <div className="md:block lg:self-start md:mt-24">
-            <img
-              src={site.logoUrl}
-              className=" rounded-2xl mx-auto  p-4 w-full lg:w-96 h-auto "
-              alt=""
-            />
-            <h3 className=" text-gold-200 text-2xl font-bold">
-            {zoneItervention ? zoneItervention : site.ville}
-              </h3>
-           
+            <div className="rounded-2xl mx-auto p-4 w-full lg:w-96 h-auto">
+              {site.logoUrl && (
+                <Image
+                  src={site.logoUrl}
+                  width={200}
+                  height={200}
+                  alt="logo"
+                />
+              )}
+            </div>
+            <h3 className="text-gold-200 text-2xl font-bold">
+              {zoneIntervention ? zoneIntervention : site.ville}
+            </h3>
           </div>
           <div className="flex-col justify-between">
-            {/* <h1 className="mb-6 text-gold-600  text-5xl font-bold"> */}
             <h1 className="hidden sm:block font-bold text-transparent mt-8 text-5xl bg-clip-text bg-gradient-to-br from-gold-800 via-gold-400 to-gold-800">
-        <br className="" />
-        {grosTitre ? grosTitre.toUpperCase() : site.title}
-      </h1>
-      <h1 className="sm:hidden font-bold text-transparent mt-8 text-5xl bg-clip-text bg-gradient-to-br from-gold-800 via-gold-400 to-gold-800">
-        <br className="" />
-        {grosTitreParts.length > 0 ? (
-          grosTitreParts.map((part, index) => (
-            <React.Fragment key={index}>
-              {part}
-              {index < grosTitreParts.length - 1 && <br />}
-            </React.Fragment>
-          ))
-        ) : (
-          <>
-           
-          </>
-        )}
-      </h1>
-            <div className="flex flex-col  justify-around items-center">
+              <br />
+              {grosTitre ? grosTitre.toUpperCase() : site.title}
+            </h1>
+            <h1 className="sm:hidden font-bold text-transparent mt-8 text-5xl bg-clip-text bg-gradient-to-br from-gold-800 via-gold-400 to-gold-800">
+              <br />
+              {grosTitreParts.length > 0 ? (
+                grosTitreParts.map((part, index) => (
+                  <React.Fragment key={index}>
+                    {part}
+                    {index < grosTitreParts.length - 1 && <br />}
+                  </React.Fragment>
+                ))
+              ) : (
+                <>
+                  {site.title}
+                </>
+              )}
+            </h1>
+            <div className="flex flex-col justify-around items-center">
               <h3 className="my-8 text-gold-200 text-3xl font-bold">
-              {sousTitre ? sousTitre : site.www}
+                {sousTitre ? sousTitre : site.www}
               </h3>
               <a
-                className="md:self-stop rounded-2xl h-16 bg-black px-6  py-3 text-2xl font-medium uppercase leading-normal text-gold-200 shadow-[0_4px_9px_-4px_#FFB200] transition duration-150 ease-in-out hover:text-black hover:bg-gold-500 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-gold-200 focus:shadow-[0_8px_9px_-4px_rgba(59,113,0,0.3),0_4px_18px_0_rgba(59,113,0,0.2)] focus:text-gold-500 focus:outline-none focus:ring-0 active:bg-lime-100 active:shadow-[0_8px_9px_-4px_rgba(59,113,0,0.3),0_4px_18px_0_rgba(59,113,0,0.2)]"
+                className="md:self-stop rounded-2xl h-16 bg-black px-6 py-3 text-2xl font-medium uppercase leading-normal text-gold-200 shadow-[0_4px_9px_-4px_#FFB200] transition duration-150 ease-in-out hover:text-black hover:bg-gold-500 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-gold-200 focus:shadow-[0_8px_9px_-4px_rgba(59,113,0,0.3),0_4px_18px_0_rgba(59,113,0,0.2)] focus:text-gold-500 focus:outline-none focus:ring-0 active:bg-lime-100 active:shadow-[0_8px_9px_-4px_rgba(59,113,0,0.3),0_4px_18px_0_rgba(59,113,0,0.2)]"
                 data-te-ripple-init
                 data-te-ripple-color="light"
                 href="/contact"
@@ -79,12 +78,9 @@ const HeaderSimple = ({ photos, title, header }) => {
               </a>
             </div>
           </div>
-          
         </div>
-        
         <Title title={title} />
       </div>
-      
     </header>
   );
 };

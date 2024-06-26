@@ -10,15 +10,6 @@ async function fetchMenus() {
   );
   const data = response.data;
   
-  // const menus = data.map ( (item) => {
-  //   const menu = {
-  //   id: item.id,
-  //   ...item.attributes,
-  //   }
-  //   return menu
-  // });
-
-  // console.log("menus",menus)
   return data;
 }
 export default fetchMenus;

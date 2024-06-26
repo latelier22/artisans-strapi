@@ -15,8 +15,6 @@ import { photos } from 'site';
     id: 'droppable',
   });
 
-  console.log("photos",photos)
-
   const handleUploadImage = async (selectedFiles) => {
     if (selectedFiles.length === 0) return;
 

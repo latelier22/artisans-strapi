@@ -6,7 +6,6 @@ import Footer from "../Footer";
 
 async function Notes() {
   const notes = await fetchNotes();
-  console.log(notes);
 
   return (
     <>

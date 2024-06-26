@@ -6,8 +6,6 @@ async function getSite() {
         const response = await axios.get(url);
         const data =  response.data.data
 
-        console.log("site fromm google", data)
-
         return data;
     } catch (error) {
         console.error("Error fetching data:", error.message);

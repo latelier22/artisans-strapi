@@ -33,8 +33,6 @@ const useSiteStore = create((set) => ({
         footerImageUrl : footerImageUrl
       };
 
-      console.log(site.footerImageUrl)
-
       // Mettez à jour le store avec le site récupéré
       set({ site: site });
     } catch (error) {

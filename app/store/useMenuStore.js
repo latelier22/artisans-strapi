@@ -49,8 +49,7 @@ const useMenuStore = create((set) => ({
   
       rootMenuItems.sort((a, b) => a.order - b.order);
       sortChildren(rootMenuItems);
-      console.log("rootMenuItems",rootMenuItems)
-  
+
       set({ menuItems: rootMenuItems });
     } catch (error) {
       console.error('Failed to fetch menus:', error);

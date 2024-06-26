@@ -24,7 +24,6 @@ async function fetchPages(pageSlug = null) {
     return pages.length > 0 ? pages[0] : null;
   }
 
-  console.log("page",pages)
   return pages;
 }
 

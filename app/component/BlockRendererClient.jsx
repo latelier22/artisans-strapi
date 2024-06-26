@@ -15,7 +15,7 @@ export default function BlockRendererClient({
       content={content}
       blocks={{
         image: ({ image }) => {
-          console.log(image);
+         
           return (
             
 

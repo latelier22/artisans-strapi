@@ -3,8 +3,6 @@
 async function myFetch(endpoint, method, body, entity) {
     const baseUrl = process.env.STRAPI_PUBLIC_URL;
 
-    console.log("endpoint, method, body, entity", endpoint, method, body, entity);
-
     const headers = {};
 
     // Adjust headers and body for FormData
@@ -29,7 +27,7 @@ async function myFetch(endpoint, method, body, entity) {
         }
 
         const data = await response.json();
-        // console.log(data)
+    
        
         return data;
     } catch (error) {

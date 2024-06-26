@@ -7,8 +7,7 @@ import './page.module.css';
 
 export default async function RootLayout({ children }) {
   const site = await fetchSite();
-  // console.log("favicon", site);
-
+ 
   // Assurez-vous que le chemin du favicon est correct
   const faviconUrl = site.favicon && site.favicon.data && site.favicon.data.attributes && site.favicon.data.attributes.formats && site.favicon.data.attributes.formats.thumbnail.url ? site.favicon.data.attributes.formats.thumbnail.url : 'default-favicon.ico';
  const completeFaviconUrl = getBaseUrl(faviconUrl)+faviconUrl
