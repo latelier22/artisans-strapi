@@ -54,7 +54,6 @@ h6 {
 
 p {
   @apply mb-4;
-  color: red
 }
 
 blockquote {
@@ -82,6 +81,9 @@ section h2{
 }
 
 section p,li{
+  @apply text-amber-200 font-poppins text-xl
+}
+ p{
   @apply text-amber-200 font-poppins text-xl
 }
 
