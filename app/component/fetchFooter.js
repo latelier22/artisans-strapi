@@ -22,7 +22,7 @@ async function fetchFooter() {
     }, {}),
   };
 
-  console.log("footer", footer);
+
   return footer;
 }
 

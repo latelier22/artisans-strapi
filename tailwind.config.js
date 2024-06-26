@@ -12,6 +12,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        roboto: ['Roboto', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
+      },
       colors: {
         gold: {
           50: '#FFFAF0',
@@ -43,5 +47,5 @@ module.exports = {
     },
   },
   darkMode: "class",
-  plugins: [require("tw-elements/dist/plugin.cjs")],
+  plugins: [require("tw-elements/dist/plugin.cjs"), require('@tailwindcss/typography')],
 };

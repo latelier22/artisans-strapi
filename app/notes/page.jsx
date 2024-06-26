@@ -1,6 +1,6 @@
 import React from "react";
 import fetchNotes from "../component/fetchNotes";
-import BlockRendererClient from "./BlockRendererClient";
+import BlockRendererClient from "../component/BlockRendererClient";
 import Navbar from "../NavBarClient";
 import Footer from "../Footer";
 
@@ -11,7 +11,7 @@ async function Notes() {
   return (
     <>
       <Navbar />
-      <div className="pt-64 container mx-auto flex flex-col justify-center items-center">
+      <div className="pt-10 container mx-auto prose">
       <BlockRendererClient content={notes[0].block} />
       </div>
       <Footer />

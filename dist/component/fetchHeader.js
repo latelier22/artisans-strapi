@@ -12,7 +12,7 @@ async function fetchHeader() {
       return acc;
     }, {})
   };
-  console.log("header", header);
+  
   return header;
 }
 export default fetchHeader;

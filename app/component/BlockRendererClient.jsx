@@ -2,14 +2,12 @@
 import Image from "next/image";
 
 import {
-  BlocksRenderer,
-  type BlocksContent,
+  BlocksRenderer
+  
 } from "@strapi/blocks-react-renderer";
 
 export default function BlockRendererClient({
-  content,
-}: {
-  readonly content: BlocksContent;
+  content
 }) {
   if (!content) return null;
   return (
@@ -19,12 +17,15 @@ export default function BlockRendererClient({
         image: ({ image }) => {
           console.log(image);
           return (
+            
+
             <Image
               src={image.url}
               width={image.width}
               height={image.height}
               alt={image.alternativeText || ""}
-            />
+              />
+              
           );
         },
       }}

@@ -488,6 +488,10 @@ export const Pages = {
     description: "Ker Protec propose une gamme complète de services pour la rénovation et la décoration de votre intérieur, ainsi que pour l'entretien et la protection de vos façades et toitures à Vannes et ses environs, y compris Auray, Lorient, Pontivy, Quiberon et d'autres villes du Morbihan. Nos experts réalisent des travaux de peinture intérieure, revêtements muraux, ravalement de façade, peinture extérieure, nettoyage de façade, nettoyage de toiture et traitement anti-mousse. Contactez-nous pour des solutions sur mesure et une qualité professionnelle."
     ,
     photos: [
+      { url: "peinture-interieur-21-02-24-1.jpeg", alt: "" },
+      { url: "peinture-interieur-21-02-24-2.jpeg", alt: "" },
+      { url: "peinture-interieur-21-02-24-3.jpeg", alt: "" },
+      { url: "peinture-interieur-21-02-24-4.jpeg", alt: "" },
     ],
     sections: [
 

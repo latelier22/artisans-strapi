@@ -20,7 +20,6 @@ async function fetchHeader() {
     }, {}),
   };
 
-  console.log("header", header);
   return header;
 }
 
