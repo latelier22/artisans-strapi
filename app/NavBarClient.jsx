@@ -2,6 +2,7 @@
 import React from "react";
 import { useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image"
 import useMenuStore from './store/useMenuStore'
 import useSiteStore from './store/useSiteStore'
 
@@ -61,7 +62,10 @@ const NavbarClient = () => {
     >
       <div className="flex w-full  items-center  px-3">
         <a href="/" className="ml-2">
-          <img src={site.logoUrl} className="h-12 w-auto logo" alt="Accueil" />
+          <Image src={site.logoUrl}
+           width={48}
+           height={48}
+           alt="Accueil" />
         </a>
         <div className="flex items-center">
           <button

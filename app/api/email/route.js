@@ -5,11 +5,13 @@ export async function POST(request) {
   
     const { prenom, nom, contenu, email, contactEmail } = await request.json();
 
-	if (!prenom || !nom || !email || !contenu) {
+	if (!prenom || !nom || !email || !contenu || !contactEmail) {
 		
 		console.log("INVALID_PARAMETER")
 		return NextResponse.json({ message: "INVALID_PARAMETER" });
 	}
+
+	console.log("contactEmail",contactEmail)
 
 	// Syntaxe adresse email
 	const pattern =

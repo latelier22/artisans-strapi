@@ -1,11 +1,9 @@
 "use client"
 
 import React from 'react';
-import { Inter } from 'next/font/google';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
-
-const inter = Inter({ subsets: ['latin'] });
+import { useState , useEffect} from 'react';
+import useSiteStore from './store/useSiteStore'
 
 const FormContact = () => {
   // Variables
@@ -16,6 +14,12 @@ const FormContact = () => {
     formState: { errors },
   } = useForm();
 
+  const { site,fetchAndSetSite} = useSiteStore();
+
+  useEffect(() => {
+    fetchAndSetSite();
+  }, [fetchAndSetSite]);
+
   // States
   const [isLoading, setIsLoading] = useState(false);
   const [isSended, setIsSended] = useState(false);
@@ -25,12 +29,18 @@ const FormContact = () => {
     if (!isLoading) {
       setIsLoading(true);
 
+      // Inclure contactEmail dans l'objet data
+      const payload = {
+        ...data,
+        contactEmail: site.email,
+      };
+
       const response = await fetch("/api/email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       });
 
       const result = await response.json();
@@ -51,6 +61,7 @@ const FormContact = () => {
     <>
       <div className ="text-black pt-32" style={{ textAlign: "center" }}>
         <h1 className="text-white">FORMULAIRE DE CONTACT:</h1>
+        <h1 className="text-white">vous pouvez aussi adresser un mail sur mon adresse mail {site.email ? site.email : " (voir en bàs de page)"}</h1>
 
         {/* Formulaire */}
         <form
