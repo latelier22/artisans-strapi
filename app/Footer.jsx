@@ -30,9 +30,10 @@ function Footer({footer}) {
         <div className="mr-12 hidden md:block">
           <span>Restons en contact sur les réseaux sociaux</span>
         </div>
+        {site.facebook && (
         <div className="flex justify-center items-center">
           <a
-            href="https://www.facebook.com/profile.php?id=61556209084036"
+            href={site.facebook}
             className="flex flex-row mr-6 text-sky-300 dark:text-neutral-200"
           >
             <svg
@@ -46,6 +47,7 @@ function Footer({footer}) {
             <p className="pl-4">La page facebook de {site.title} !</p>
           </a>
         </div>
+        )}
       </div>
 
       <div className="mx-6 pt-8 pb-4 text-center">

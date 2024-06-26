@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
+import Image from "next/image";
 
 const MyLightBox = ({ photos }) => {
   useEffect(() => {
@@ -31,9 +32,11 @@ const MyLightBox = ({ photos }) => {
               key={index}
               className="flex mx-auto w-full h-auto lg:w-1/5 "
             >
-              <img
+              <Image
                 src={`${baseUrl}${photo.url}`}
                 data-te-img={`${baseUrl}${photo.url}`}
+                width={300}
+                height={300}
                 alt={photo.alt || "Image"}
                 className={`mb-5 w-72 h-72 object-cover object-center cursor-zoom-in data-[te-lightbox-disabled]:cursor-auto`}
               />
