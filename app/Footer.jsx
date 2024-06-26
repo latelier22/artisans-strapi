@@ -1,13 +1,11 @@
 "use client";
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import useMenuStore from "./store/useMenuStore";
 import useSiteStore from "./store/useSiteStore";
 import Image from "next/image";
-
 import Title from "./TitleLine";
 
-function Footer({footer}) {
+function Footer({ footer }) {
   const { menuItems, fetchAndSetMenus } = useMenuStore();
   const { site, fetchAndSetSite } = useSiteStore();
 
@@ -19,8 +17,6 @@ function Footer({footer}) {
     fetchAndSetMenus();
   }, [fetchAndSetMenus]);
 
-
-
   // Définir un tableau d'objets pour les photos du footer
   const photoFooter = [];
 
@@ -31,35 +27,39 @@ function Footer({footer}) {
           <span>Restons en contact sur les réseaux sociaux</span>
         </div>
         {site.facebook && (
-        <div className="flex justify-center items-center">
-          <a
-            href={site.facebook}
-            className="flex flex-row mr-6 text-sky-300 dark:text-neutral-200"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              fill="currentColor"
-              viewBox="0 0 24 24"
+          <div className="flex justify-center items-center">
+            <a
+              href={site.facebook}
+              className="flex flex-row mr-6 text-sky-300 dark:text-neutral-200"
             >
-              <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-            </svg>
-            <p className="pl-4">La page facebook de {site.title} !</p>
-          </a>
-        </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+              </svg>
+              <p className="pl-4">La page facebook de {site.title} !</p>
+            </a>
+          </div>
         )}
       </div>
 
       <div className="mx-6 pt-8 pb-4 text-center">
         <div className="mb-6">
-          <Title title= {footer && footer.messages && footer.messages["title"] 
-          ? footer.messages["title"] 
-          : "Contactez nous !"}/>
+          <Title
+            title={
+              footer && footer.messages && footer.messages["title"]
+                ? footer.messages["title"]
+                : "Contactez nous !"
+            }
+          />
           <p className="mb-4 text-white">
-        {footer && footer.messages && footer.messages["intervention"] 
-          ? footer.messages["intervention"] 
-          : "No intervention message available"}
-      </p>
+            {footer && footer.messages && footer.messages["intervention"]
+              ? footer.messages["intervention"]
+              : "No intervention message available"}
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 mb-4">
@@ -78,7 +78,7 @@ function Footer({footer}) {
               <li>{site.telephone}</li>
               <li>{site.email}</li>
               <br />
-              <li className=" text-gold-800">N° de SIRET {site.SIRET}</li>
+              <li className="text-gold-800">N° de SIRET {site.SIRET}</li>
             </ul>
           </div>
 
@@ -87,12 +87,19 @@ function Footer({footer}) {
               {/* DEVIS GRATUIT ! */}
             </h5>
             <div className="h-60">
-            <Image src={site.footerImageUrl} width={200} height={200} alt="..." />
+              {site.footerImageUrl && (
+                <Image
+                  src={site.footerImageUrl}
+                  width={200}
+                  height={200}
+                  alt="Devis Gratuit"
+                />
+              )}
             </div>
           </div>
 
           <div className="mb-6">
-            <h5 className="mb-2.5 font-bold  text-white  dark:text-gold-800">
+            <h5 className="mb-2.5 font-bold text-white dark:text-gold-800">
               Nos services
             </h5>
 
@@ -101,7 +108,7 @@ function Footer({footer}) {
                 <li key={index}>
                   <a
                     href={menuItem.route}
-                    className=" text-white hover:dark:text-gold-800 dark:text-gold-200"
+                    className="text-white hover:dark:text-gold-800 dark:text-gold-200"
                   >
                     {menuItem.label}
                   </a>
@@ -117,7 +124,12 @@ function Footer({footer}) {
               key={index}
               className="relative w-full overflow-hidden bg-cover bg-no-repeat rounded-lg"
             >
-              <img src={photo.url} className="w-full" alt={photo.alt} />
+              <Image
+                src={photo.url}
+                width={200}
+                height={200}
+                alt={photo.alt}
+              />
               <a href="#!">
                 <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsl(0,0%,98.4%,0.2)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
               </a>
@@ -130,11 +142,13 @@ function Footer({footer}) {
         <span>&copy; 2023 Copyright: </span>
 
         <a className="mx-3" href="#">
-          <img
-            src="https://tecdn.b-cdn.net/img/logo/te-transparent-noshadows.webp"
+          <Image
+            src="/images/te-transparent-noshadows.webp"
             className="h-5"
             alt="TE Logo"
             loading="lazy"
+            width={48}
+            height={48}
           />
         </a>
 

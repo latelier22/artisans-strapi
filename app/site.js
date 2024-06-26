@@ -1,6 +1,6 @@
 export let site = {
-  title: "KER PROTEC",
-  description: "KER PROTEC - Olivier GUREME- 07 71 84 91 07",
+  title: "MON ENTREPRISE",
+  description: "MON ENTREPRISE - NOM Prénom - 07 71 84 91 07",
   societe: "KER PROTEC",
   SIRET: "53478675100022",
   contact: "Olivier GUREME",
@@ -133,140 +133,7 @@ export const listesActions = [
 
 export const Pages = {
   
-  "peinture-decoration": {
-    title: "Peinture intérieure",
-    tags : "Peinture intérieure, Travaux de peinture, Rénovation intérieure, Revêtements muraux, Décoration intérieure, Peinture décorative",
-    description: "À la recherche de professionnels de la peinture intérieure et de la rénovation ? Découvrez nos services de qualité à Vannes et ses environs. Experts en travaux de peinture, rénovation intérieure, revêtements muraux et décoration. Contactez-nous pour une peinture décorative sur mesure.",
-    photos: [
-      { url: "peinture-interieur-21-02-24-1.jpeg", alt: "" },
-      { url: "peinture-interieur-21-02-24-2.jpeg", alt: "" },
-      { url: "peinture-interieur-21-02-24-3.jpeg", alt: "" },
-      { url: "peinture-interieur-21-02-24-4.jpeg", alt: "" },
-      { url: "chantier-01-1.jpeg", alt: "" },
-      { url: "chantier-01-2.jpeg", alt: "" },
-      { url: "chantier-01-3.jpeg", alt: "" },
-      { url: "chantier-01-4.jpeg", alt: "" },
-      { url: "chantier-01-5.jpeg", alt: "" },
-      { url: "chantier-01-6.jpeg", alt: "" },
-      { url: "chantier-01-7.jpeg", alt: "" },
-      { url: "chantier-01-8.jpeg", alt: "" },
-      { url: "chantier-01-9.jpeg", alt: "" },
-      { url: "chantier-01-10.jpeg", alt: "" },
-      { url: "chantier-01-11.jpeg", alt: "" },
-      { url: "chantier-01-12.jpeg", alt: "" },
-    ],
-    sections: [
-      {
-        title: "Donnez de la couleur à votre intérieur :",
-        body: (
-          <>
-            <p>
-              Ker Protec vous propose un très large choix de prestations et de
-              finitions :
-            </p>
-            <ul>
-              <li>
-                <strong>Peintures mat :</strong> idéal pour vos plafonds et
-                garage, disponible dans un large choix de couleurs.
-              </li>
-              <li>
-                <strong>Couche d&apos;impression :</strong> pour les murs et plafonds
-                qui n&apos;ont jamais été peints.
-              </li>
-              <li>
-                <strong>Peintures velours :</strong> optimales pour les
-                différentes pièces à vivre de votre maison, elles sont
-                lessivables et résistent parfaitement dans le temps.
-              </li>
-              <li>
-                <strong>Peintures satinées :</strong> destinées aux pièces plus
-                exposées à l&apos;humidité comme les salles de bain et la cuisine.
-              </li>
-            </ul>
-            <p>
-              Un très large choix de couleurs pourra vous être proposé selon vos
-              goûts.
-            </p>
-            <h2>Revêtements de sols</h2>
-            <p>
-              Nous vous proposons également la pose de revêtements de sol,
-              parquet bois ou flottant.
-            </p>
-            <p>
-              Nous proposons également des peintures sols résistantes pour
-              garage, escalier extérieur, terrasse ou autre.
-            </p>
-          </>
-        ),
-      },
-      {
-        title: "NOS SAVOIR FAIRE :",
-        body: (
-          <ul className="list-disc pl-4">
-            <li>Réparation d&apos;enduit</li>
-            <li>Rénovation et décoration d&apos;intérieur</li>
-            <li>Protection des sols et mobilier</li>
-            <li>Revêtement de sols & pose de plinthes</li>
-            <li>Pose de papier & toile de verre ou rénovation</li>
-            <li>Pose de plaques de parement intérieur et extérieur</li>
-            <li>
-              Peinture sur boiseries / vernis & vitrification (escalier,
-              parquet, porte, volets)
-            </li>
-          </ul>
-        ),
-      },
-    ],
-    cards: [],
-  },
 
-  "peinture-nuancier": {
-    title: "Peintures & nuanciers",
-    tags : '<meta name="keywords" content="Peinture intérieure, Travaux de peinture, Rénovation intérieure, Revêtements muraux, Décoration intérieure, Peinture décorative"></meta>',
-    description: "",
-    photos: [
-      { url: "peinture-nuancier-1.png", alt: "peinture et nuancier" },
-      { url: "peinture-nuancier-2.png", alt: "peinture et nuancier" },
-      { url: "peinture-nuancier-3.png", alt: "peinture et nuancier" },
-      { url: "peinture-nuancier-4.png", alt: "peinture et nuancier" },
-    ],
-    sections: [
-      {
-        title: "LA COULEUR:",
-        body: (
-          <ul className="list-disc pl-4">
-            <p>Car votre satisfaction est notre exigence, nous vous proposons un très large choix de couleurs et de produits professionnels fabriqués par des experts pour satisfaire vos attentes.</p>
-    <p>Nous saurons vous conseiller les couleurs qui embelliront votre intérieur ou les façades de votre maison. Avec nos fournisseurs, nous mettrons également tout en œuvre pour trouver les produits idéaux pour votre projet.</p>
-    <p>Des peintures professionnelles, respectueuses de l&apos;environnement et adaptées à vos besoins, protégeront votre maison et lui donneront une plus-value.</p>
-          </ul>
-        ),
-      },
-
-      {
-        title: "LES NUANCIERS:",
-        body: (
-          <ul className="list-disc pl-4">
-            <li>
-              Ces palettes de teintes sont l’aboutissement du travail d’experts
-              de la couleur alliant style, modernisme et authenticité.
-            </li>
-            <li>
-              Cette offre de teintes utilisables en intérieur et en extérieur
-              est scindée en:32 teintes Lumières où douceur rime avec précision.
-              1288 teintes Iconiques déclinées de la plus claire à la plus
-              foncée permettant d’offrir une vision subtile de chaque couleur
-              réalisable.
-            </li>
-            <li>
-              Chaque teinte est identifiée via une référence unique favorisant
-              ainsi la facilité de lecture de notre offre couleur
-            </li>
-          </ul>
-        ),
-      },
-    ],
-    cards: [],
-  },
   nettoyage: {
 
     title: "Nettoyage de façade, toiture et extérieur - Traitement anti-mousse et hydrofuge",
@@ -478,6 +345,22 @@ export const Pages = {
   },
   accueil: {
     title: "Peinture intérieure, décoration, ravalement à Vannes, Theix et ses alentours,  Morbihan - Ker Protec",
+    tags : "Peinture intérieure, Travaux de peinture, Rénovation intérieure, Revêtements muraux, Décoration intérieure, Peinture décorative, Ravalement de façade, Peinture extérieure, Réparation de façade, Nettoyage de façade, Protection de façade, Nettoyage de toiture, Nettoyage extérieur, Traitement anti-mousse, Traitement hydrofuge Vannes, Auray, Lorient, Pontivy, Quiberon, Morbihan",
+    description: "Ker Protec propose une gamme complète de services pour la rénovation et la décoration de votre intérieur, ainsi que pour l'entretien et la protection de vos façades et toitures à Vannes et ses environs, y compris Auray, Lorient, Pontivy, Quiberon et d'autres villes du Morbihan. Nos experts réalisent des travaux de peinture intérieure, revêtements muraux, ravalement de façade, peinture extérieure, nettoyage de façade, nettoyage de toiture et traitement anti-mousse. Contactez-nous pour des solutions sur mesure et une qualité professionnelle."
+    ,
+    photos: [
+      { url: "peinture-interieur-21-02-24-1.jpeg", alt: "" },
+      { url: "peinture-interieur-21-02-24-2.jpeg", alt: "" },
+      { url: "peinture-interieur-21-02-24-3.jpeg", alt: "" },
+      { url: "peinture-interieur-21-02-24-4.jpeg", alt: "" },
+    ],
+    sections: [
+
+    ],
+    cards: [],
+  },
+  "espaces-verts": {
+    title: "Espaces-verts",
     tags : "Peinture intérieure, Travaux de peinture, Rénovation intérieure, Revêtements muraux, Décoration intérieure, Peinture décorative, Ravalement de façade, Peinture extérieure, Réparation de façade, Nettoyage de façade, Protection de façade, Nettoyage de toiture, Nettoyage extérieur, Traitement anti-mousse, Traitement hydrofuge Vannes, Auray, Lorient, Pontivy, Quiberon, Morbihan",
     description: "Ker Protec propose une gamme complète de services pour la rénovation et la décoration de votre intérieur, ainsi que pour l'entretien et la protection de vos façades et toitures à Vannes et ses environs, y compris Auray, Lorient, Pontivy, Quiberon et d'autres villes du Morbihan. Nos experts réalisent des travaux de peinture intérieure, revêtements muraux, ravalement de façade, peinture extérieure, nettoyage de façade, nettoyage de toiture et traitement anti-mousse. Contactez-nous pour des solutions sur mesure et une qualité professionnelle."
     ,

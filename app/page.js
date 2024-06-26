@@ -1,8 +1,7 @@
 import React from "react";
-import RootLayout from "../app/layout";
 import { cards, sections, Pages } from "./site";
 
-import Navbar from "./NavBarClient";
+import NavbarClient from "./NavBarClient";
 import HeaderSimple from "./headerSimple";
 import Footer from "./Footer";
 import Cards from "./Cards";
@@ -67,10 +66,9 @@ async function Home() {
   const sortedCards = [...cards].sort((a, b) => a.order - b.order);
 
   return (
-    <RootLayout pageTitle={pageTitle} pageDescription={pageDescription} pageTags={page.tags}>
-      <Navbar />
+   <main>
+      <NavbarClient />
       <HeaderSimple title={"Page d'accueil"} header={header} />
-
       <Title title="Dernières réalisations" />
       {photos ? <MyLightBox photos={photos} nombre={4} /> : null}
 
@@ -83,7 +81,8 @@ async function Home() {
       <Section section={page.section.length > 1 ? page.section[1] : sections[1]} />
 
       <Footer footer={footer} />
-    </RootLayout>
+   </main>
+   
   );
 };
 

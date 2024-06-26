@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import Image from "next/image";
+import getBaseUrl from "./component/getBaseUrl"
 
 const MyLightBox = ({ photos }) => {
   useEffect(() => {
@@ -11,13 +12,7 @@ const MyLightBox = ({ photos }) => {
     init();
   }, []);
 
-  function getBaseUrl(url) {
-    const baseUrl = url.startsWith('/uploads')
-      ? process.env.NEXT_PUBLIC_STRAPI_URL
-      : `images/`;
-    return baseUrl;
-  }
-
+  
   return (
     <div className="flex items-center justify-center mx-auto">
       <div

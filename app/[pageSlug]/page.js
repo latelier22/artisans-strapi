@@ -1,38 +1,46 @@
-// MyPage.js
-
 import React from "react";
-import NavbarClient from "../NavBarClient"; // Ensure the correct import
-import Footer from "../Footer";
-import RootLayout from "../layout";
+import { cards, sections, Pages } from "../site";
+
+import NavbarClient from "../NavBarClient";
 import HeaderSimple from "../headerSimple";
-import Section from "../Section";
+import Footer from "../Footer";
 import Cards from "../Cards";
+import Section from "../Section";
+import Title from "../Title";
 import MyLightBox from "../MyLightBox";
-import { Pages, site } from "../site";
-import getPages from "./../component/getPages";
+
+import fetchSite from "../component/fetchSite";
 import fetchPages from "../component/fetchPages";
 import fetchFooter from "../component/fetchFooter";
-import fetchHeader from"../component/fetchHeader";
+import fetchHeader from "../component/fetchHeader";
 import BlockRendererClient from "../component/BlockRendererClient";
 
-// Metadata generation function to handle missing page data
-// Metadata generation function to handle missing page data
 export async function generateMetadata({ params }, parent) {
-  const pageSlug = params.pageSlug;
-  let page = Pages[pageSlug]; // Initial page data from static source
-  const apiPage = await fetchPages(pageSlug); // Fetch page data from the API
-  console.log("apiPage = await fetchPages(pageSlug)",apiPage)
+  const pageSlug = params.pageSlug
+  let page = Pages[pageSlug]; // Récupérer la page initiale
+  const apiPage = await fetchPages(pageSlug); // Récupérer les données de la page depuis l'API
 
-  // If no data from API, use default values
-  if (!apiPage) {
-    page = { title: "Page en cours de construction", description: "", tags: "" };
-  } else {
-    // Update initial page data with API data if available
-    page = { ...page, ...apiPage };
+  const site = await fetchSite();
+
+  // Vérifier si les données de la page API existent et ne sont pas vides
+  if (apiPage) {
+    const apiPageData = apiPage; // Données de la page depuis l'API
+
+    // Parcourir chaque clé de la page initiale
+    for (const key in page) {
+      // Vérifier si la clé existe dans les données de la page API et si sa valeur n'est pas vide
+      if (apiPageData[key] && typeof apiPageData[key] === 'string' && apiPageData[key].trim() !== "") {
+        // Remplacer la valeur de la page initiale par la valeur de la page API
+        page[key] = apiPageData[key];
+      } else if (apiPageData[key] && typeof apiPageData[key] === 'object' && !Array.isArray(apiPageData[key])) {
+        // Traiter les objets spécifiques
+        page[key] = { ...page[key], ...apiPageData[key] };
+      }
+    }
   }
 
   return {
-    title: `${page.title} | ${site.title}`, // Updated title
+    title: `${page.title} | ${site.title}`, // Retourner le titre mis à jour
     keywords: page.tags ? page.tags.split(',').map(tag => tag.trim()) : [],
     description: page.description ? page.description : ""
   };
@@ -48,21 +56,23 @@ async function MyPage({ params }) {
 // console.log(page.block)
   if (!page) {
     return (
-      <RootLayout>
+    <main>
         <div className="min-h-screen flex flex-col justify-center items-center">
           <h1>Page {pageSlug} en cours de construction</h1>
         </div>
-      </RootLayout>
+    </main>
+      
     );
   }
 
   return (
-    <RootLayout pageTitle={page.title} pageDescription={page.description} pageTags={page.tags}>
+    <main>
+
       <NavbarClient />
       <HeaderSimple photos={page.photos} title={page.title} header={header}/>
 
       {page.block.length > 0 && (
-       <div className="pt-12 container mx-auto prose ">
+        <div className="pt-12 container mx-auto prose ">
           <BlockRendererClient content={page.block} />
 
        </div>
@@ -70,12 +80,12 @@ async function MyPage({ params }) {
       {/* <MyLightBox photos={page.photos} />
       {page.sections.map((section, index) => (
         <Section key={index} section={section} />
-      ))}
-      <div className="">
+        ))}
+        <div className="">
         <Cards cards={page.cards} />
-      </div> */}
+        </div> */}
       <Footer footer = {footer}/> 
-    </RootLayout>
+      </main>
   );
 };
 

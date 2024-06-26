@@ -3,7 +3,7 @@ import myFetch from "./myFetch";
 async function fetchSite() {
   const channel = process.env.NEXT_PUBLIC_STRAPI_CHANNEL;
   const response = await myFetch(
-    `/api/sites?filters[channels][name][$eq]=${channel}`,
+    `/api/sites?populate=*&filters[channels][name][$eq]=${channel}`,
     "GET",
     null,
     "sites"
