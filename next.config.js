@@ -1,9 +1,30 @@
-/** @type {import('next').NextConfig} */
+  /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-    images: {
-      domains: ['artisans.latelier22.fr','vps.latelier22.fr','assets.react-photo-album.com', 'placehold.co'],
-    },
-  };
-  
-  module.exports = nextConfig;
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "assets.react-photo-album.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "artisans.latelier22.fr",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "vps.latelier22.fr",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+        pathname: "/**",
+      },
+    ],
+  },
+};
+
+module.exports = nextConfig;
