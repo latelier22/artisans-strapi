@@ -118,8 +118,9 @@ const NavbarClient = () => {
               ))}
             </ul>
         </div>
+        {site.facebook && (
         <div className="flex ml-10 md:ml-0 flex-row items-center self:justify-end">
-        <a href="https://www.facebook.com/profile.php?id=61556209084036" className="text-sky-300 dark:text-sky-300">
+        <a href={site.facebook} className="text-sky-300 dark:text-sky-300">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-12 w-12"
@@ -130,6 +131,7 @@ const NavbarClient = () => {
           </svg>
         </a>
       </div>
+        )}
       </div>
     </nav>
     

@@ -30,12 +30,12 @@ const HeaderSimple = ({ photos, title, header }) => {
 
   return (
     <header>
-      <div className="pt-32 text-center text-neutral-200 dark:bg-neutral-900 dark:text-neutral-200">
-        <div className="flex flex-col  lg:flex-row first-letter:lg:justify-around  justify-center items-center">
-          <div className="md:block lg:self-start mt-24">
+      <div className="md:pt-32 text-center text-neutral-200 dark:bg-neutral-900 dark:text-neutral-200">
+        <div className="flex flex-col  lg:flex-row  lg:justify-around  justify-start items-center">
+          <div className="md:block lg:self-start md:mt-24">
             <img
               src={site.logoUrl}
-              className=" rounded-2xl mx-4  p-4 w-40 lg:w-96 h-auto "
+              className=" rounded-2xl mx-auto  p-4 w-full lg:w-96 h-auto "
               alt=""
             />
             <h3 className=" text-gold-200 text-2xl font-bold">
