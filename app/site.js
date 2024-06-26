@@ -1,16 +1,16 @@
 export let site = {
   title: "MON ENTREPRISE",
   description: "MON ENTREPRISE - NOM Prénom - 07 71 84 91 07",
-  societe: "KER PROTEC",
-  SIRET: "53478675100022",
-  contact: "Olivier GUREME",
-  telephone: "0771849107",
-  adresse: "Place du général De Gaulle",
-  codePostal: "56450",
-  ville: "THEIX NOYALO",
-  email: "kerprotec56@gmail.com",
-  logo: { url: "images/logo-barre-du-haut.png", alt: "logo Ker PROTEC" },
-  Logo: { url: "images/logo-banniere.png", alt: "logo Ker PROTEC" },
+  societe: "MON ENTREPRISE",
+  SIRET: "1234567890123",
+  contact: "NOM Prénom",
+  telephone: "0123456789",
+  adresse: "adresse",
+  codePostal: "XXXXX",
+  ville: "VILLE",
+  email: "contact@monsite.fr",
+  logo: { url: "images/logo-barre-du-haut.png", alt: "logo" },
+  Logo: { url: "images/logo-banniere.png", alt: "logo" },
 };
 
 export const menuItems = [
