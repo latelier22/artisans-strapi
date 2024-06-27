@@ -21,7 +21,7 @@ function Footer({ footer }) {
   const photoFooter = [];
 
   return (
-    <footer className="bg-sky-600 text-center text-white dark:bg-neutral-900 dark:text-gold-400">
+    <footer className="footer text-center ">
       <div className="flex items-center justify-center border-neutral-200 p-6 dark:border-neutral-500 lg:justify-end">
         <div className="mr-12 hidden md:block">
           <span>Restons en contact sur les réseaux sociaux</span>
@@ -64,11 +64,11 @@ function Footer({ footer }) {
 
         <div className="grid grid-cols-1 md:grid-cols-3 mb-4">
           <div className="mb-6">
-            <h5 className="mb-2.5 font-bold text-gold-800 dark:text-gold-800">
+            <h5 className="mb-2.5 font-bold">
               Qui sommes-nous?
             </h5>
 
-            <ul className="mb-0 list-none text-gold-200">
+            <ul className="mb-0 list-none">
               <li>{site.societe}</li>
               <li>{site.contact}</li>
               <li>{site.adresse}</li>
@@ -78,12 +78,12 @@ function Footer({ footer }) {
               <li>{site.telephone}</li>
               <li>{site.email}</li>
               <br />
-              <li className="text-gold-800">N° de SIRET {site.SIRET}</li>
+              <li className="">N° de SIRET {site.SIRET}</li>
             </ul>
           </div>
 
           <div className="mb-6 flex-col flex items-center">
-            <h5 className="mb-2.5 font-bold text-yellow-500 dark:text-neutral-200">
+            <h5 className="mb-2.5 font-bold">
               {/* DEVIS GRATUIT ! */}
             </h5>
             <div className="h-60">
@@ -99,7 +99,7 @@ function Footer({ footer }) {
           </div>
 
           <div className="mb-6">
-            <h5 className="mb-2.5 font-bold text-white dark:text-gold-800">
+            <h5 className="mb-2.5 font-bold">
               Nos services
             </h5>
 
@@ -108,7 +108,7 @@ function Footer({ footer }) {
                 <li key={index}>
                   <a
                     href={menuItem.route}
-                    className="text-white hover:dark:text-gold-800 dark:text-gold-200"
+                    className=""
                   >
                     {menuItem.label}
                   </a>
@@ -130,9 +130,7 @@ function Footer({ footer }) {
                 height={200}
                 alt={photo.alt}
               />
-              <a href="#!">
-                <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsl(0,0%,98.4%,0.2)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
-              </a>
+             
             </div>
           ))}
         </div>

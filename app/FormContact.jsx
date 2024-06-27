@@ -59,9 +59,9 @@ const FormContact = () => {
 
   return (
     <>
-      <div className ="text-black pt-32" style={{ textAlign: "center" }}>
-        <h1 className="text-white">FORMULAIRE DE CONTACT:</h1>
-        <h1 className="text-white">vous pouvez aussi adresser un mail sur mon adresse mail {site.email ? site.email : " (voir en bàs de page)"}</h1>
+      <div className ="pt-32" style={{ textAlign: "center" }}>
+        <h1 className="">FORMULAIRE DE CONTACT:</h1>
+        <h1 className="">vous pouvez aussi adresser un mail sur mon adresse mail {site.email ? site.email : " (voir en bàs de page)"}</h1>
 
         {/* Formulaire */}
         <form

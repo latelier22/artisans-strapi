@@ -26,7 +26,7 @@ const HeaderSimple = ({ photos, title, header }) => {
 
   return (
     <header>
-      <div className="md:pt-32 px-2 text-center text-neutral-200 dark:bg-neutral-900 dark:text-neutral-200">
+      <div className="md:pt-32 px-2 text-center">
         <div className="flex flex-col lg:flex-row lg:justify-around justify-start items-center">
           <div className="md:block lg:self-start md:mt-24">
             <div className="rounded-2xl mx-auto p-4 w-full lg:w-96 h-auto">
@@ -39,16 +39,16 @@ const HeaderSimple = ({ photos, title, header }) => {
                 />
               )}
             </div>
-            <h3 className="text-gold-200 text-2xl font-bold">
+            <h3 className="intervention text-2xl font-bold">
               {zoneIntervention ? zoneIntervention : site.ville}
             </h3>
           </div>
           <div className="flex-col justify-between">
-            <h1 className="hidden sm:block font-bold text-transparent mt-8 text-5xl bg-clip-text bg-gradient-to-br from-gold-800 via-gold-400 to-gold-800">
+            <h1 className="hidden sm:block font-bold  mt-8 text-5xl">
               <br />
               {grosTitre ? grosTitre.toUpperCase() : site.title}
             </h1>
-            <h1 className="sm:hidden font-bold text-transparent mt-8 text-5xl bg-clip-text bg-gradient-to-br from-gold-800 via-gold-400 to-gold-800">
+            <h1 className="sm:hidden font-bold  mt-8 text-5xl">
               <br />
               {grosTitreParts.length > 0 ? (
                 grosTitreParts.map((part, index) => (
@@ -64,7 +64,7 @@ const HeaderSimple = ({ photos, title, header }) => {
               )}
             </h1>
             <div className="flex flex-col justify-around items-center">
-              <h3 className="my-8 text-gold-200 text-3xl font-bold">
+              <h3 className="my-8 text-3xl font-bold">
                 {sousTitre ? sousTitre : site.www}
               </h3>
               <a

@@ -14,8 +14,8 @@
     }
 
   html {
-    /* @apply text-[#4f4f4f]; */
-    @apply bg-white;
+    @apply text-[#4f4f4f];
+    @apply bg-warning-50;
     @apply flex-col;
   }
   html.dark {
@@ -45,7 +45,7 @@ h4 {
 }
 
 h5 {
-  @apply text-lg mb-2;
+  @apply text-lg mb-2 text-white;
 }
 
 h6 {
@@ -73,11 +73,11 @@ img {
 }
 
 section{
-  @apply bg-lime-600 text-white;
+  @apply bg-purple-500 text-white;
 }
 
 section h2{
-  @apply text-amber-400 font-poppins italic
+  @apply text-white font-poppins italic
 }
 
 section p,li{
@@ -87,3 +87,38 @@ section p,li{
   @apply text-amber-200 font-poppins text-xl
 }
 
+nav , .footer {
+  @apply bg-purple-700 
+ 
+}
+
+h5 .footer {
+ @apply  text-white
+ 
+}
+
+
+
+nav a{
+  @apply text-white 
+ 
+}
+
+.my-line {
+  @apply bg-black
+} 
+
+.my-title span {
+  @apply text-black bg-transparent
+}
+
+header h1 {
+  @apply text-red-500
+}
+header h3 {
+  @apply text-black
+}
+
+header h3.intervention {
+  @apply text-red-500
+}
