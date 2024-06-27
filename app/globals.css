@@ -6,16 +6,16 @@
 @layer base {
   
     :root {
-      --primary-text-color: #4f4f4f;
-      --primary-bg-color: #ffffff;
+      --primary-text-color: #263474;
+      --primary-bg-color: #1168b2;
       --dark-text-color: #f3e2bc; /* Utilisé pour le mode sombre */
       /* --dark-text-color: #f3e2bc; Utilisé pour le mode sombre */
       --dark-bg-color: #121212; /* Utilisé pour le mode sombre */
     }
 
   html {
-    @apply text-[#4f4f4f];
-    @apply bg-warning-50;
+    @apply text-[var(--primary-text-color)];
+    @apply bg-white;
     @apply flex-col;
   }
   html.dark {
@@ -49,7 +49,7 @@ h5 {
 }
 
 h6 {
-  @apply text-base mb-2 text-neutral-100;
+  @apply text-base mb-2;
 }
 
 p {
@@ -73,7 +73,7 @@ img {
 }
 
 section{
-  @apply bg-purple-500 text-white;
+  @apply bg-bleuIvan-500 text-white;
 }
 
 section h2{
@@ -81,14 +81,14 @@ section h2{
 }
 
 section p,li{
-  @apply text-amber-200 font-poppins text-xl
+  @apply text-white font-poppins text-xl
 }
  p{
-  @apply text-amber-200 font-poppins text-xl
+  @apply text-white font-poppins text-xl
 }
 
 nav , .footer {
-  @apply bg-purple-700 
+  @apply bg-bleuIvan-500 
  
 }
 
@@ -96,6 +96,8 @@ h5 .footer {
  @apply  text-white
  
 }
+
+
 
 nav a{
   @apply text-white 
@@ -111,12 +113,17 @@ nav a{
 }
 
 header h1 {
-  @apply text-red-500
+  @apply text-bleuIvan-800
 }
 header h3 {
   @apply text-black
 }
 
 header h3.intervention {
-  @apply text-red-500
+  @apply text-bleuIvan-800
+}
+
+.myButton {
+
+  @apply bg-bleuIvan-200 text-black focus:bg-gold-200 focus:text-white  active:bg-white active:text-bleuIvan-800 hover:text-bleuIvan-200 hover:bg-bleuIvan-800 
 }

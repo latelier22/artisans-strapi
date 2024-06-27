@@ -68,7 +68,7 @@ const HeaderSimple = ({ photos, title, header }) => {
                 {sousTitre ? sousTitre : site.www}
               </h3>
               <a
-                className="md:self-stop rounded-2xl h-16 bg-black px-6 py-3 text-2xl font-medium uppercase leading-normal text-gold-200 shadow-[0_4px_9px_-4px_#FFB200] transition duration-150 ease-in-out hover:text-black hover:bg-gold-500 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-gold-200 focus:shadow-[0_8px_9px_-4px_rgba(59,113,0,0.3),0_4px_18px_0_rgba(59,113,0,0.2)] focus:text-gold-500 focus:outline-none focus:ring-0 active:bg-lime-100 active:shadow-[0_8px_9px_-4px_rgba(59,113,0,0.3),0_4px_18px_0_rgba(59,113,0,0.2)]"
+                className="myButton md:self-stop rounded-2xl h-16 px-6 py-3 text-2xl font-medium uppercase leading-normal   focus:outline-none focus:ring-0 shadow-[0_4px_9px_-4px_#FFB200] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(59,113,0,0.3),0_4px_18px_0_rgba(59,113,0,0.2)] active:shadow-[0_8px_9px_-4px_rgba(59,113,0,0.3),0_4px_18px_0_rgba(59,113,0,0.2)]"
                 data-te-ripple-init
                 data-te-ripple-color="light"
                 href="/contact"
