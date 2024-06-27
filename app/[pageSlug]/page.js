@@ -16,9 +16,10 @@ import fetchHeader from "../component/fetchHeader";
 import BlockRendererClient from "../component/BlockRendererClient";
 
 export async function generateMetadata({ params }, parent) {
-  const pageSlug = params.pageSlug
+  const pageSlug = params.pageSlug;
   let page = Pages[pageSlug]; // Récupérer la page initiale
   const apiPage = await fetchPages(pageSlug); // Récupérer les données de la page depuis l'API
+  console.log("pageSlug", apiPage);
 
   const site = await fetchSite();
 
@@ -39,13 +40,21 @@ export async function generateMetadata({ params }, parent) {
     }
   }
 
+  // Vérifier que `page` et `site` ne sont pas undefined
+  if (!page || !site) {
+    return {
+      title: 'Page non trouvée',
+      keywords: [],
+      description: ''
+    };
+  }
+
   return {
     title: `${page.title} | ${site.title}`, // Retourner le titre mis à jour
     keywords: page.tags ? page.tags.split(',').map(tag => tag.trim()) : [],
     description: page.description ? page.description : ""
   };
 }
-
 
 async function MyPage({ params }) {
   const pageSlug = params.pageSlug;
@@ -55,37 +64,34 @@ async function MyPage({ params }) {
 
   if (!page) {
     return (
-    <main>
+      <main>
         <div className="min-h-screen flex flex-col justify-center items-center">
           <h1>Page {pageSlug} en cours de construction</h1>
         </div>
-    </main>
-      
+      </main>
     );
   }
 
   return (
     <main>
-
       <NavbarClient />
-      <HeaderSimple photos={page.photos} title={page.title} header={header}/>
+      <HeaderSimple photos={page.photos} title={page.title} header={header} />
 
-      {page.block.length > 0 && (
-        <div className="pt-12 px-2 container mx-auto prose ">
+      {page.block && page.block.length > 0 && (
+        <div className="pt-12 px-2 container mx-auto prose">
           <BlockRendererClient content={page.block} />
-
-       </div>
+        </div>
       )}
       {/* <MyLightBox photos={page.photos} />
       {page.sections.map((section, index) => (
         <Section key={index} section={section} />
-        ))}
-        <div className="">
+      ))}
+      <div className="">
         <Cards cards={page.cards} />
-        </div> */}
-      <Footer footer = {footer}/> 
-      </main>
+      </div> */}
+      <Footer footer={footer} />
+    </main>
   );
-};
+}
 
 export default MyPage;

@@ -1,17 +1,17 @@
-export let site = {
-  title: "MON ENTREPRISE",
-  description: "MON ENTREPRISE - NOM Prénom - 07 71 84 91 07",
-  societe: "MON ENTREPRISE",
-  SIRET: "1234567890123",
-  contact: "NOM Prénom",
-  telephone: "0123456789",
-  adresse: "adresse",
-  codePostal: "XXXXX",
-  ville: "VILLE",
-  email: "contact@monsite.fr",
-  logo: { url: "images/logo-barre-du-haut.png", alt: "logo" },
-  Logo: { url: "images/logo-banniere.png", alt: "logo" },
-};
+// export let site = {
+//   title: "MON ENTREPRISE",
+//   description: "MON ENTREPRISE - NOM Prénom - 07 71 84 91 07",
+//   societe: "MON ENTREPRISE",
+//   SIRET: "1234567890123",
+//   contact: "NOM Prénom",
+//   telephone: "0123456789",
+//   adresse: "adresse",
+//   codePostal: "XXXXX",
+//   ville: "VILLE",
+//   email: "contact@monsite.fr",
+//   logo: { url: "images/logo-barre-du-haut.png", alt: "logo" },
+//   Logo: { url: "images/logo-banniere.png", alt: "logo" },
+// };
 
 export const menuItems = [
   { label: "ACCUEIL", route: "/" },

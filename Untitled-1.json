@@ -1,0 +1,106 @@
+{
+[0]   id: 3,
+[0]   title: 'Accueil',
+[0]   tags: 'MULTISERVICES, ESPACES VERTS, PEINTURE, NETTOYAGE',
+[0]   description: "Bienvenue sur la page d'accueil de Brillant multiservices",
+[0]   createdAt: '2024-06-12T12:15:26.759Z',
+[0]   updatedAt: '2024-06-27T04:58:57.798Z',
+[0]   slug: 'accueil',
+[0]   block: [ { type: 'paragraph', children: [Array] } ],
+[0]   photos: { data: [ [Object], [Object], [Object], [Object] ] },
+[0]   section: [
+[0]     {
+[0]       id: 3,
+[0]       title: 'Qui sommes-nous?',
+[0]       body: 'Fort de notre expérience de plus de 6 ans  nous vous accompagnerons dans votre projet et mettrons tout en œuvre pour satisfaire vos exigences.\n' +
+[0]         '\n' +
+[0]         "Que se soit pour un projet  d'espaces vert, de nettoyage et entretien de vos toitures et façades, vous pouvez compter sur nous dans tout le Morbihan et même au delà."
+[0]     },
+[0]     {
+[0]       id: 4,
+[0]       title: 'NOS SAVOIRS FAIRE',
+[0]       body: "- Entretien et création d'espaces verts, élagage, abattage\n" +
+[0]         '- Nettoyage et peinture de toiture, démoussage\n' +
+[0]         '- Peinture extérieure / ravalement\n'
+[0]     }
+[0]   ],
+[0]   channel: { data: { id: 4, attributes: [Object] } }
+[0] }
+[0] favicon https:/artisans.latelier22.fr/uploads/thumbnail_logo_49f4304ff9.png
+[0] {
+[0]   id: 3,
+[0]   title: 'Accueil',
+[0]   tags: 'MULTISERVICES, ESPACES VERTS, PEINTURE, NETTOYAGE',
+[0]   description: "Bienvenue sur la page d'accueil de Brillant multiservices",
+[0]   createdAt: '2024-06-12T12:15:26.759Z',
+[0]   updatedAt: '2024-06-27T04:58:57.798Z',
+[0]   slug: 'accueil',
+[0]   block: [ { type: 'paragraph', children: [Array] } ],
+[0]   photos: { data: [ [Object], [Object], [Object], [Object] ] },
+[0]   section: [
+[0]     {
+[0]       id: 3,
+[0]       title: 'Qui sommes-nous?',
+[0]       body: 'Fort de notre expérience de plus de 6 ans  nous vous accompagnerons dans votre projet et mettrons tout en œuvre pour satisfaire vos exigences.\n' +
+[0]         '\n' +
+[0]         "Que se soit pour un projet  d'espaces vert, de nettoyage et entretien de vos toitures et façades, vous pouvez compter sur nous dans tout le Morbihan et même au delà."
+[0]     },
+[0]     {
+[0]       id: 4,
+[0]       title: 'NOS SAVOIRS FAIRE',
+[0]       body: "- Entretien et création d'espaces verts, élagage, abattage\n" +
+[0]         '- Nettoyage et peinture de toiture, démoussage\n' +
+[0]         '- Peinture extérieure / ravalement\n'
+[0]     }
+[0]   ],
+[0]   channel: { data: { id: 4, attributes: [Object] } }
+[0] }
+[0] favicon https:/artisans.latelier22.fr/uploads/thumbnail_logo_49f4304ff9.png
+[0] {
+[0]   id: 2,
+[0]   title: 'Brillant MULTISERVICES',
+[0]   description: "Brillant-multiservices56, dirigé par David Brillant, propose des services d'abattage, d'élagage et d'étêtage d'arbres, ainsi que la taille de haies et d'arbustes avec évacuation des déchets verts. Nous réalisons également des travaux de tonte de pelouse, de débroussaillage, de désherbage et de nettoyage de dalles, terrasses et murets. Nous offrons des services de décapage de maison, de démoussage de toit et de peinture et nettoyage extérieur. Nous intervenons dans le secteur de Morbihan, Lorient et alentours.",
+[0]   societe: 'entreprise individuelle ',
+[0]   SIRET: '83527212100012',
+[0]   contact: 'David BRILLANT',
+[0]   telephone: '0750813813',
+[0]   adress: 'Pont er pache',
+[0]   codePostal: '56440',
+[0]   ville: 'LANGUIDIC',
+[0]   email: 'contact@brillant-multiservices56.fr',
+[0]   createdAt: '2024-06-12T06:45:00.180Z',
+[0]   updatedAt: '2024-06-26T14:55:42.871Z',
+[0]   www: 'www.brillant-multiservices56.fr',
+[0]   facebook: null,
+[0]   logo: { data: { id: 9, attributes: [Object] } },
+[0]   Logo2: { data: null },
+[0]   channels: { data: { id: 4, attributes: [Object] } },
+[0]   footerImage: { data: { id: 7, attributes: [Object] } },
+[0]   footer: { data: { id: 1, attributes: [Object] } },
+[0]   header: { data: { id: 1, attributes: [Object] } },
+[0]   favicon: { data: { id: 20, attributes: [Object] } }
+[0] }
+[0] {
+[0]   id: 2,
+[0]   title: 'Brillant MULTISERVICES',
+[0]   description: "Brillant-multiservices56, dirigé par David Brillant, propose des services d'abattage, d'élagage et d'étêtage d'arbres, ainsi que la taille de haies et d'arbustes avec évacuation des déchets verts. Nous réalisons également des travaux de tonte de pelouse, de débroussaillage, de désherbage et de nettoyage de dalles, terrasses et murets. Nous offrons des services de décapage de maison, de démoussage de toit et de peinture et nettoyage extérieur. Nous intervenons dans le secteur de Morbihan, Lorient et alentours.",
+[0]   societe: 'entreprise individuelle ',
+[0]   SIRET: '83527212100012',
+[0]   contact: 'David BRILLANT',
+[0]   telephone: '0750813813',
+[0]   adress: 'Pont er pache',
+[0]   codePostal: '56440',
+[0]   ville: 'LANGUIDIC',
+[0]   email: 'contact@brillant-multiservices56.fr',
+[0]   createdAt: '2024-06-12T06:45:00.180Z',
+[0]   updatedAt: '2024-06-26T14:55:42.871Z',
+[0]   www: 'www.brillant-multiservices56.fr',
+[0]   facebook: null,
+[0]   logo: { data: { id: 9, attributes: [Object] } },
+[0]   Logo2: { data: null },
+[0]   channels: { data: { id: 4, attributes: [Object] } },
+[0]   footerImage: { data: { id: 7, attributes: [Object] } },
+[0]   footer: { data: { id: 1, attributes: [Object] } },
+[0]   header: { data: { id: 1, attributes: [Object] } },
+[0]   favicon: { data: { id: 20, attributes: [Object] } }
+[0] }
