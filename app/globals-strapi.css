@@ -6,15 +6,15 @@
 @layer base {
   
     :root {
-      --primary-text-color: #4f4f4f;
-      --primary-bg-color: #ffffff;
+      --primary-text-color: #263474;
+      --primary-bg-color: #1168b2;
       --dark-text-color: #f3e2bc; /* Utilisé pour le mode sombre */
       /* --dark-text-color: #f3e2bc; Utilisé pour le mode sombre */
       --dark-bg-color: #121212; /* Utilisé pour le mode sombre */
     }
 
   html {
-    /* @apply text-[#4f4f4f]; */
+    @apply text-[var(--primary-text-color)];
     @apply bg-white;
     @apply flex-col;
   }
@@ -45,7 +45,7 @@ h4 {
 }
 
 h5 {
-  @apply text-lg mb-2;
+  @apply text-lg mb-2 text-white;
 }
 
 h6 {
@@ -73,13 +73,20 @@ img {
 }
 
 section{
-  @apply bg-lime-600 text-white;
+  @apply bg-bleuIvan-500 text-white;
 }
 
 section h2{
-  @apply text-amber-400 font-poppins italic
+  @apply text-white font-poppins italic
 }
 
 section p,li{
+  @apply text-white font-poppins text-xl
+}
+ p{
+  @apply text-white font-poppins text-xl
+}
+ p{
   @apply text-amber-200 font-poppins text-xl
 }
+

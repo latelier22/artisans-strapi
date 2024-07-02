@@ -76,6 +76,11 @@ async function Home() {
 
       <Section section={page.section && page.section.length > 0 ? page.section[0] : sections[0]} />
 
+{/* CARDS 
+https://artisans.latelier22.fr/api/pages?filters[channel][name][$eq]=MULTIMEDIA-SERVICES&filters[slug][$eq]=accueil&populate[0]=cards&populate[1]=cards.image
+*/}
+
+
       <div className="bg-white dark:bg-neutral-900 dark:text-gold-500">
         <Cards cards={sortedCards} buttonColor={backgroundColor} />
       </div>
