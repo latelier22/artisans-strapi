@@ -5,11 +5,12 @@ import NavbarClient from "./NavBarClient";
 import HeaderSimple from "./headerSimple";
 import Footer from "./Footer";
 import Cards from "./Cards";
-import Section from "./Section";
-import Title from "./Title";
+import Section from "./Section";import Title from "./Title";
 import MyLightBox from "./MyLightBox";
 
 import fetchSite from "./component/fetchSite";
+import fetchCards from "./component/fetchCards";
+
 import fetchPages from "./component/fetchPages";
 import fetchFooter from "./component/fetchFooter";
 import fetchHeader from "./component/fetchHeader";
@@ -63,6 +64,7 @@ async function Home() {
 
   const footer = await fetchFooter();
   const header = await fetchHeader();
+  const cards = await fetchCards();
 
   // Trier les cards par order croissant
   const sortedCards = [...cards].sort((a, b) => a.order - b.order);
@@ -81,9 +83,11 @@ https://artisans.latelier22.fr/api/pages?filters[channel][name][$eq]=MULTIMEDIA-
 */}
 
 
-      <div className="bg-white dark:bg-neutral-900 dark:text-gold-500">
-        <Cards cards={sortedCards} buttonColor={backgroundColor} />
-      </div>
+{cards.length > 0 && (
+        <div className="bg-white dark:bg-neutral-900 dark:text-gold-500">
+          <Cards cards={cards} buttonColor={backgroundColor} />
+        </div>
+      )}
       <Section section={page.section && page.section[1] ? page.section[1] : sections[0]} />
       {/* <Section section={page.section && page.section.length > 1 ? page.section[1] : sections[1]} /> */}
 

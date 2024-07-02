@@ -2,6 +2,7 @@
 import React from "react";
 import { useEffect } from "react";
 import MyModal from "./MyModal";
+import getBaseUrl from "./component/getBaseUrl"
 
 const Card = ({ index, card, buttonColor, children, syliusCard }) => {
   useEffect(() => {
@@ -14,6 +15,11 @@ const Card = ({ index, card, buttonColor, children, syliusCard }) => {
 
   buttonColor = "bg-gradient-to-br from-gold-900 via-gold-500 to-gold-800"
 
+  console.log("card",card.image.data.attributes.url)
+  const baseUrl = getBaseUrl(card.image.data.attributes.url);
+  const imageUrl = baseUrl + card.image.data.attributes.url
+  console.log(baseUrl)
+
   return (
     <header>
       <div className="block md:mx-10 rounded-xl border-4 border-gold-700 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
@@ -24,7 +30,7 @@ const Card = ({ index, card, buttonColor, children, syliusCard }) => {
         >
           <img
             className="absolute top-0 left-0 w-full h-full object-cover object-center"
-            src={syliusCard ? card.url : `images/${card.url}`}
+            src={imageUrl}
             data-te-toggle="modal"
             data-te-target={`#myModal2-${index}`}
           />
