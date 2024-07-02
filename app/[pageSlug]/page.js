@@ -14,6 +14,7 @@ import fetchPages from "../component/fetchPages";
 import fetchFooter from "../component/fetchFooter";
 import fetchHeader from "../component/fetchHeader";
 import BlockRendererClient from "../component/BlockRendererClient";
+import fetchCards from "@/component/fetchCards";
 
 export async function generateMetadata({ params }, parent) {
   const pageSlug = params.pageSlug;
@@ -22,6 +23,8 @@ export async function generateMetadata({ params }, parent) {
   console.log("pageSlug", apiPage);
 
   const site = await fetchSite();
+
+
 
   // Vérifier si les données de la page API existent et ne sont pas vides
   if (apiPage) {
@@ -57,38 +60,48 @@ export async function generateMetadata({ params }, parent) {
 }
 
 async function MyPage({ params }) {
+
   const pageSlug = params.pageSlug;
+
   const page = await fetchPages(pageSlug);
   const footer = await fetchFooter();
   const header = await fetchHeader();
 
-  if (!page) {
-    return (
-      <main>
-        <div className="min-h-screen flex flex-col justify-center items-center">
-          <h1>Page {pageSlug} en cours de construction</h1>
-        </div>
-      </main>
-    );
-  }
+  const photos = page && page.photos ? page.photos.data.map(photo => ({ id: photo.id, ...photo.attributes })) : [];
+
+  const cards = await fetchCards(pageSlug);
 
   return (
     <main>
       <NavbarClient />
       <HeaderSimple photos={page.photos} title={page.title} header={header} />
 
+      {photos ? <MyLightBox photos={photos} nombre={4} /> : null}
+
+      {page.section && page.section.length > 0 &&
+        (
+          <Section section={page.section[0]} />
+        )
+      }
+
       {page.block && page.block.length > 0 && (
         <div className="pt-12 px-2 container mx-auto prose">
           <BlockRendererClient content={page.block} />
         </div>
       )}
-      {/* <MyLightBox photos={page.photos} />
-      {page.sections.map((section, index) => (
-        <Section key={index} section={section} />
-      ))}
-      <div className="">
-        <Cards cards={page.cards} />
-      </div> */}
+
+      {cards.length > 0 && (
+        <div className="bg-white dark:bg-neutral-900 dark:text-gold-500">
+          <Cards cards={cards} />
+        </div>
+      )}
+
+      {page.section && page.section.length > 1 &&
+        (
+          <Section section={page.section[1]} />
+        )
+      }
+     
       <Footer footer={footer} />
     </main>
   );

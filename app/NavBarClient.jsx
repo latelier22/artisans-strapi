@@ -19,6 +19,7 @@ const NavbarClient = () => {
 
   useEffect(() => {
     fetchAndSetSite();
+    
   }, [fetchAndSetSite]);
 
   useEffect(() => {
@@ -60,12 +61,12 @@ const NavbarClient = () => {
       data-te-navbar-ref
     >
       <div className="flex w-full  items-center  px-3">
-      <a href="/" className="ml-2 w-8 h-auto">
+      <a href="/" className="md:hidden ml-2 w-18 h-auto">
             {site.logoUrl && (
               <Image
-                src={site.logoUrl}
-                width={48}
-                height={48}
+                src={site.logoMiniUrl}
+                width={128}
+                height={96}
                 alt="Accueil"
               />
             )}

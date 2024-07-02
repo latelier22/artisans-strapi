@@ -5,7 +5,7 @@ import NavbarClient from "./NavBarClient";
 import HeaderSimple from "./headerSimple";
 import Footer from "./Footer";
 import Cards from "./Cards";
-import Section from "./Section";import Title from "./Title";
+import Section from "./Section"; import Title from "./Title";
 import MyLightBox from "./MyLightBox";
 
 import fetchSite from "./component/fetchSite";
@@ -53,7 +53,7 @@ async function Home() {
   const pageSlug = "accueil";
   let page = Pages[pageSlug];
   const apiPage = await fetchPages(pageSlug);
-  console.log("apiPage",apiPage)
+  console.log("apiPage", apiPage)
   page = apiPage ? apiPage : page;
   const pageTitle = page.title;
   const pageDescription = page.description;
@@ -64,7 +64,7 @@ async function Home() {
 
   const footer = await fetchFooter();
   const header = await fetchHeader();
-  const cards = await fetchCards();
+  const cards = await fetchCards("accueil");
 
   // Trier les cards par order croissant
   const sortedCards = [...cards].sort((a, b) => a.order - b.order);
@@ -76,20 +76,22 @@ async function Home() {
       <Title title="Dernières réalisations" />
       {photos ? <MyLightBox photos={photos} nombre={4} /> : null}
 
-      <Section section={page.section && page.section.length > 0 ? page.section[0] : sections[0]} />
+      {page.section && page.section.length > 0 &&
+        (
+          <Section section={page.section[0]} />
+        )
+      }
 
-{/* CARDS 
-https://artisans.latelier22.fr/api/pages?filters[channel][name][$eq]=MULTIMEDIA-SERVICES&filters[slug][$eq]=accueil&populate[0]=cards&populate[1]=cards.image
-*/}
-
-
-{cards.length > 0 && (
+      {cards.length > 0 && (
         <div className="bg-white dark:bg-neutral-900 dark:text-gold-500">
           <Cards cards={cards} buttonColor={backgroundColor} />
         </div>
       )}
-      <Section section={page.section && page.section[1] ? page.section[1] : sections[0]} />
-      {/* <Section section={page.section && page.section.length > 1 ? page.section[1] : sections[1]} /> */}
+      {page.section && page.section.length > 1 &&
+        (
+          <Section section={page.section[1]} />
+        )
+      }
 
       <Footer footer={footer} />
     </main>
