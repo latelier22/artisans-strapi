@@ -73,7 +73,7 @@ img {
 }
 
 section{
-  @apply bg-bleuIvan-500 text-white;
+  @apply bg-purple-700 text-white;
 }
 
 section h2{
@@ -88,7 +88,7 @@ section p,li{
 }
 
 nav , .footer {
-  @apply bg-bleuIvan-500 
+  @apply bg-purple-700 
  
 }
 
