@@ -13,6 +13,7 @@ async function fetchHeader() {
   // Extracting and formatting the header data
   const header = {
     id: data.id,
+    bgImage : data.attributes.bgImage.data.attributes,
    
     messages: data.attributes.message.reduce((acc, msg) => {
       acc[msg.title] = msg.message;

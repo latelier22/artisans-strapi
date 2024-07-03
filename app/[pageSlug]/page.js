@@ -20,7 +20,7 @@ export async function generateMetadata({ params }, parent) {
   const pageSlug = params.pageSlug;
   let page = Pages[pageSlug]; // Récupérer la page initiale
   const apiPage = await fetchPages(pageSlug); // Récupérer les données de la page depuis l'API
-  console.log("pageSlug", apiPage);
+
 
   const site = await fetchSite();
 

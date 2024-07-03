@@ -56,7 +56,7 @@ async function Home() {
   const pageSlug = "accueil";
   let page = Pages[pageSlug];
   const apiPage = await fetchPages(pageSlug);
-  console.log("apiPage", apiPage)
+
   page = apiPage ? apiPage : page;
   const pageTitle = page.title;
   const pageDescription = page.description;
@@ -72,15 +72,16 @@ async function Home() {
   // Trier les cards par order croissant
   const sortedCards = [...cards].sort((a, b) => a.order - b.order);
 
-  const avantApres = process.env.AVANT_APRES
+console.log(page.avantApres)
+  const sliders = [{url: page.avantApres[0].avant.data.attributes.url},{url: page.avantApres[0].apres.data.attributes.url} ]
 
   return (
     <main>
       <NavbarClient />
       <HeaderSimple title={"Page d'accueil"} header={header} />
       <Title title="Dernières réalisations" />
-      {photos && avantApres==="false" ? <MyLightBox photos={photos} nombre={4} /> : null}
-      {photos && avantApres==="true" ? <Slider photos={photos} /> : null}
+
+      { page.avantApres && page.avantApres.length >0 ? <Slider photos={sliders} /> : null}
 
       {page.section && page.section.length > 0 &&
         (
@@ -89,7 +90,7 @@ async function Home() {
       }
 
       {cards.length > 0 && (
-        <div className="bg-white dark:bg-neutral-900 dark:text-gold-500">
+        <div className="cards">
           <Cards cards={cards} buttonColor={backgroundColor} />
         </div>
       )}

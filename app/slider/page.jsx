@@ -9,7 +9,7 @@ async function Test() {
   const files = await fetchFiles("image");
   const photos = transformResponse(files);
 
-  console.log(photos.slice(0,2))
+
 
   return (
     <>

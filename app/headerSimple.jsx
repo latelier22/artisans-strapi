@@ -1,8 +1,11 @@
 "use client";
+
 import React, { useEffect } from "react";
 import Image from "next/image";
 import Title from "./TitleLine";
 import useSiteStore from './store/useSiteStore';
+
+import getBaseUrl from "./component/getBaseUrl";
 
 const HeaderSimple = ({ photos, title, header }) => {
   const { site, fetchAndSetSite } = useSiteStore();
@@ -24,9 +27,20 @@ const HeaderSimple = ({ photos, title, header }) => {
   const zoneIntervention = header && header.messages && header.messages["zone intervention"];
   const grosTitreParts = grosTitre ? grosTitre.split('-') : [];
 
+
+
+  const baseUrl = header.bgImage ? getBaseUrl(header.bgImage.url) : null;
+  
   return (
     <header>
-      <div className="md:pt-32 px-2 text-center">
+      <div
+        className="md:pt-32 px-2 text-center"
+        style={{
+          backgroundImage: header.bgImage ? `url(${baseUrl}${header.bgImage.url})` : "none",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="flex flex-col lg:flex-row lg:justify-around justify-start items-center">
           <div className="md:block lg:self-start md:mt-24">
             <div className="rounded-2xl mx-auto p-4 w-full lg:w-96 h-auto">

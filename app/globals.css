@@ -105,18 +105,18 @@ nav a{
 }
 
 .my-line {
-  @apply bg-black
+  @apply bg-white 
 } 
 
 .my-title span {
-  @apply text-black bg-transparent
+  @apply text-white bg-transparent text-3xl
 }
 
 header h1 {
-  @apply text-bleuIvan-800
+  @apply text-white
 }
 header h3 {
-  @apply text-black
+  @apply text-bleuIvan-800 bg-blue-100 rounded-xl p-4
 }
 
 header h3.intervention {
@@ -136,4 +136,8 @@ header h3.intervention {
 .menuMobile
 {
   @apply text-white
+}
+
+.card {
+  @apply bg-blue-100
 }
