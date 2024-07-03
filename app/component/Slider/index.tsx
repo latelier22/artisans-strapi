@@ -2,12 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-
 import getBaseUrl from "@/component/getBaseUrl";
-
-// If you are looking for mobile support, please refer to the
-// following implementation by @daviddecorso
-// https://github.com/unhingedmagikarp/comparison-slider/tree/mobile-support
 
 export const Slider = ({
   photos = [
@@ -26,14 +21,22 @@ export const Slider = ({
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
 
-  const handleMove = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (!isDragging) return;
-
-    const rect = event.currentTarget.getBoundingClientRect();
-    const x = Math.max(0, Math.min(event.clientX - rect.left, rect.width));
-    const percent = Math.max(0, Math.min((x / rect.width) * 100, 100));
-
+  const handleMove = (xPosition: number, width: number) => {
+    const x = Math.max(0, Math.min(xPosition, width));
+    const percent = Math.max(0, Math.min((x / width) * 100, 100));
     setSliderPosition(percent);
+  };
+
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (!isDragging) return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    handleMove(event.clientX - rect.left, rect.width);
+  };
+
+  const handleTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
+    if (!isDragging) return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    handleMove(event.touches[0].clientX - rect.left, rect.width);
   };
 
   const handleMouseDown = () => {
@@ -44,14 +47,28 @@ export const Slider = ({
     setIsDragging(false);
   };
 
+  const handleTouchStart = () => {
+    setIsDragging(true);
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
   const baseUrl = getBaseUrl(photos[0].url);
 
   return (
-    <div className="w-full relative" onMouseUp={handleMouseUp}>
+    <div
+      className="w-full relative"
+      onMouseUp={handleMouseUp}
+      onTouchEnd={handleTouchEnd}
+    >
       <div
         className="relative w-full max-w-[700px] aspect-[1/1] m-auto overflow-hidden select-none"
-        onMouseMove={handleMove}
+        onMouseMove={handleMouseMove}
         onMouseDown={handleMouseDown}
+        onTouchMove={handleTouchMove}
+        onTouchStart={handleTouchStart}
       >
         <Image alt="" fill draggable={false} priority src={`${baseUrl}${photos[1].url}`} />
 

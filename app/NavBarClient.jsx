@@ -61,7 +61,7 @@ const NavbarClient = () => {
       data-te-navbar-ref
     >
       <div className="flex w-full  items-center  px-3">
-      <a href="/" className="md:hidden ml-2 w-18 h-auto">
+      {/* <a href="/" className="md:hidden ml-2 w-18 h-auto">
             {site.logoUrl && (
               <Image
                 src={site.logoMiniUrl}
@@ -70,10 +70,10 @@ const NavbarClient = () => {
                 alt="Accueil"
               />
             )}
-          </a>
+          </a> */}
         <div className="flex items-center">
           <button
-            className="border-0 bg-transparent px-2 text-xl leading-none transition-shadow duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:hidden"
+            className="border-0 bg-transparent  text-xl leading-none transition-shadow duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:hidden"
             type="button"
             data-te-collapse-init
             data-te-target="#navbarSupportedContentY"
@@ -81,15 +81,15 @@ const NavbarClient = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="[&>svg]:w-5">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="h-7 w-7"
-              >
+            <span className="[&>svg]:w-24">
+            <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  viewBox="0 0 24 24"
+  strokeWidth="3"
+  className="menuMobile h-12 w-12"
+  style={{ stroke: "currentColor" }}
+>
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"

@@ -2,8 +2,7 @@ import myFetch from "./myFetch";
 
 async function fetchPages(pageSlug = null) {
   const channel = process.env.NEXT_PUBLIC_STRAPI_CHANNEL;
-  let url = `/api/pages?populate=*&filters[channel][name][$eq]=${channel}`;
-
+  let url = `/api/pages?filters[channel][name][$eq]=${channel}&populate[0]=avantApres&populate[1]=avantApres.avant&populate[2]=photos&populate[3]=section`;
   // If pageSlug is provided, add a filter for it
   if (pageSlug) {
     url += `&filters[slug][$eq]=${pageSlug}`;

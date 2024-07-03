@@ -132,3 +132,8 @@ header h3.intervention {
 
   @apply bg-blue-100
 }
+
+.menuMobile
+{
+  @apply text-white
+}
