@@ -10,7 +10,7 @@ async function Notes() {
   return (
     <>
       <Navbar />
-      <div className="pt-10 container mx-auto prose">
+      <div className="pt-10 container mx-auto prose max-w-none">
       <BlockRendererClient content={notes[0].block} />
       </div>
       <Footer />

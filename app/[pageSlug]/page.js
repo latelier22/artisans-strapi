@@ -85,9 +85,9 @@ async function MyPage({ params }) {
       }
 
       {page.block && page.block.length > 0 && (
-        <div className="pt-12 px-2 container mx-auto prose">
-          <BlockRendererClient content={page.block} />
-        </div>
+        <div className="pt-12 px-2 container mx-auto prose max-w-none">
+        <BlockRendererClient content={page.block} />
+      </div>
       )}
 
       {cards.length > 0 && (

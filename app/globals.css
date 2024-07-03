@@ -64,12 +64,21 @@ img {
   @apply my-8 object-cover w-full;
 }
 
+.prose {
+  @apply bg-white
+}
+
 .prose h1 {
   color: var(--dark-text-color)
 }
 
 .prose h2 {
   color: var(--dark-text-color)
+}
+
+
+.prose p {
+  @apply text-black
 }
 
 section{

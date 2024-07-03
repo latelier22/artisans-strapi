@@ -18,6 +18,7 @@ export default function BlockRendererClient({
          
           return (
             
+<div className="w-1/5 mx-auto">
 
             <Image
               src={image.url}
@@ -26,6 +27,7 @@ export default function BlockRendererClient({
               alt={image.alternativeText || ""}
               />
               
+              </div>
           );
         },
       }}
