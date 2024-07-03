@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+
+@layer base {
+  
+    :root {
+      --primary-text-color: #263474;
+      --primary-bg-color: #1168b2;
+      --dark-text-color: #f3e2bc; /* Utilisé pour le mode sombre */
+      /* --dark-text-color: #f3e2bc; Utilisé pour le mode sombre */
+      --dark-bg-color: #121212; /* Utilisé pour le mode sombre */
+    }
+
+  html {
+    @apply text-[var(--primary-text-color)];
+    @apply bg-white;
+    @apply flex-col;
+  }
+  html.dark {
+    @apply text-neutral-50;
+    @apply bg-neutral-800;
+  }
+}
+
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+  @apply text-4xl mb-4 ;
+}
+
+h2 {
+  @apply text-3xl mb-2;
+  color: red
+}
+
+h3 {
+  @apply text-2xl mb-2;
+}
+
+h4 {
+  @apply text-xl mb-2;
+}
+
+h5 {
+  @apply text-lg mb-2 text-white;
+}
+
+h6 {
+  @apply text-base mb-2;
+}
+
+p {
+  @apply mb-4;
+}
+
+blockquote {
+  @apply border-l-4 border-gray-200 italic my-8 pl-8;
+}
+
+img {
+  @apply my-8 object-cover w-full;
+}
+
+.prose h1 {
+  color: var(--dark-text-color)
+}
+
+.prose h2 {
+  color: var(--dark-text-color)
+}
+
+section{
+  @apply bg-bleuIvan-500 text-white;
+}
+
+section h2{
+  @apply text-white font-poppins italic
+}
+
+section p,li{
+  @apply text-white font-poppins text-xl
+}
+ p{
+  @apply text-white font-poppins text-xl
+}
+
+nav , .footer {
+  @apply bg-bleuIvan-500 
+ 
+}
+
+h5 .footer {
+ @apply  text-white
+ 
+}
+
+
+
+nav a{
+  @apply text-white 
+ 
+}
+
+.my-line {
+  @apply bg-black
+} 
+
+.my-title span {
+  @apply text-black bg-transparent
+}
+
+header h1 {
+  @apply text-bleuIvan-800
+}
+header h3 {
+  @apply text-black
+}
+
+header h3.intervention {
+  @apply text-bleuIvan-800
+}
+
+.myButton {
+
+  @apply bg-bleuIvan-200 text-black focus:bg-gold-200 focus:text-white  active:bg-white active:text-bleuIvan-800 hover:text-bleuIvan-200 hover:bg-bleuIvan-800 rounded-lg
+}
+
+.bgLight {
+
+  @apply bg-blue-100
+}

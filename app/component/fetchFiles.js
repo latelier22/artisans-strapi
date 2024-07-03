@@ -21,7 +21,7 @@ export default fetchFiles;
 
 export function transformResponse(response) {
   return response.map(file => ({
-    src: `http://vps.latelier22.fr:1336${file.url}`,
+    src: `https://artisans.latelier22.fr${file.url}`,
     width: file.width,
     height: file.height
   }));

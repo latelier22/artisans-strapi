@@ -4,6 +4,9 @@ import { cards, sections, Pages } from "./site";
 import NavbarClient from "./NavBarClient";
 import HeaderSimple from "./headerSimple";
 import Footer from "./Footer";
+
+import {Slider} from "@/component/Slider"
+
 import Cards from "./Cards";
 import Section from "./Section"; import Title from "./Title";
 import MyLightBox from "./MyLightBox";
@@ -69,12 +72,15 @@ async function Home() {
   // Trier les cards par order croissant
   const sortedCards = [...cards].sort((a, b) => a.order - b.order);
 
+  const avantApres = process.env.AVANT_APRES
+
   return (
     <main>
       <NavbarClient />
       <HeaderSimple title={"Page d'accueil"} header={header} />
       <Title title="Dernières réalisations" />
-      {photos ? <MyLightBox photos={photos} nombre={4} /> : null}
+      {photos && avantApres==="false" ? <MyLightBox photos={photos} nombre={4} /> : null}
+      {photos && avantApres==="true" ? <Slider photos={photos} /> : null}
 
       {page.section && page.section.length > 0 &&
         (
