@@ -3,7 +3,7 @@ import fetchSite from "./component/fetchSite";
 import getBaseUrl from "./component/getBaseUrl"
 
 import './globals.css';
-import './page.module.css';
+// import './page.module.css';
 
 export default async function RootLayout({ children }) {
   const site = await fetchSite();

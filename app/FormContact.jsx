@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useState , useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import useSiteStore from './store/useSiteStore'
 
 const FormContact = () => {
@@ -14,7 +14,7 @@ const FormContact = () => {
     formState: { errors },
   } = useForm();
 
-  const { site,fetchAndSetSite} = useSiteStore();
+  const { site, fetchAndSetSite } = useSiteStore();
 
   useEffect(() => {
     fetchAndSetSite();
@@ -59,7 +59,7 @@ const FormContact = () => {
 
   return (
     <>
-      <div className ="pt-32" style={{ textAlign: "center" }}>
+      <div className="pt-32 mb-8" style={{ textAlign: "center" }}>
         <h1 className="">FORMULAIRE DE CONTACT:</h1>
         <h1 className="">vous pouvez aussi adresser un mail sur mon adresse mail {site.email ? site.email : " (voir en bàs de page)"}</h1>
 
@@ -69,11 +69,14 @@ const FormContact = () => {
           onSubmit={handleSubmit(onSubmitHandler)}
         >
           {isSended && (
-            <p className="text-white">
+            <p className="myButton">
               Votre message a bien été envoyé avec succès, nous vous répondrons rapidement.
             </p>
           )}
-          <div style={{ backgroundColor: "#f5f5f5", padding: "30px", borderRadius: "5px", textAlign: "left" }}>
+          <div
+            className="bgLight"
+            style={{ padding: "30px", borderRadius: "5px", textAlign: "left" }}
+          >
             <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "15px" }}>
               <div style={{ margin: 0 }}>
                 <label htmlFor="prenom" className="label text-black">
@@ -104,7 +107,7 @@ const FormContact = () => {
                 )}
               </div>
             </div>
-            <div  className="flex  justify-between" style={{ marginTop: "15px" }}>
+            <div className="flex  justify-between" style={{ marginTop: "15px" }}>
               <label htmlFor="email" className="label text-black">
                 Adresse email
               </label>
@@ -121,8 +124,9 @@ const FormContact = () => {
           </div>
 
           <div
+            className="bgLight"
             style={{
-              backgroundColor: "#f5f5f5",
+
               padding: "30px",
               borderRadius: "5px",
               textAlign: "left",
@@ -155,7 +159,7 @@ const FormContact = () => {
             }}
           >
             {!isLoading && (
-              <button className="text-white" style={{ padding: "5px 10px" }}>Envoyer</button>
+              <button className="myButton" style={{ padding: "5px 10px" }}>Envoyer</button>
             )}
           </div>
         </form>

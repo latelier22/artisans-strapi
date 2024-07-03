@@ -125,5 +125,10 @@ header h3.intervention {
 
 .myButton {
 
-  @apply bg-bleuIvan-200 text-black focus:bg-gold-200 focus:text-white  active:bg-white active:text-bleuIvan-800 hover:text-bleuIvan-200 hover:bg-bleuIvan-800 
+  @apply bg-bleuIvan-200 text-black focus:bg-gold-200 focus:text-white  active:bg-white active:text-bleuIvan-800 hover:text-bleuIvan-200 hover:bg-bleuIvan-800 rounded-lg
+}
+
+.bgLight {
+
+  @apply bg-blue-100
 }
