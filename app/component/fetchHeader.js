@@ -13,8 +13,7 @@ async function fetchHeader() {
   // Extracting and formatting the header data
   const header = {
     id: data.id,
-    bgImage : data.attributes.bgImage.data.attributes,
-   
+    bgImage: data?.attributes?.bgImage?.data?.attributes || null, // Using optional chaining and providing a default value of null
     messages: data.attributes.message.reduce((acc, msg) => {
       acc[msg.title] = msg.message;
       return acc;

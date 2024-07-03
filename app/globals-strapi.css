@@ -97,7 +97,9 @@ h5 .footer {
  
 }
 
-
+nav .adresse {
+  @apply  w-full text-center text-bleuIvan-800
+}
 
 nav a{
   @apply text-white 
@@ -112,15 +114,23 @@ nav a{
   @apply text-white bg-transparent text-3xl
 }
 
+header {
+  @apply bg-white 
+}
+
 header h1 {
-  @apply text-white
+  @apply text-bleuIvan-800
 }
 header h3 {
-  @apply text-bleuIvan-800 bg-blue-100 rounded-xl p-4
+  @apply text-bleuIvan-800 
 }
 
 header h3.intervention {
   @apply text-bleuIvan-800
+}
+
+header div.marginSite {
+  @apply md:pt-16
 }
 
 .myButton {

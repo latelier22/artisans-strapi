@@ -6,13 +6,13 @@ import './globals.css';
 
 export default async function RootLayout({ children }) {
   const site = await fetchSite();
-  console.log("site", site.bgImage.data.attributes.url);
+  
  
   // Assurez-vous que le chemin du favicon est correct
   const faviconUrl = site.favicon && site.favicon.data && site.favicon.data.attributes && site.favicon.data.attributes.formats && site.favicon.data.attributes.formats.thumbnail.url ? site.favicon.data.attributes.formats.thumbnail.url : 'default-favicon.ico';
   const completeFaviconUrl = getBaseUrl(faviconUrl) + faviconUrl;
  
-  const bgImageUrl = site.bgImage ? getBaseUrl(site.bgImage.data.attributes.url) + site.bgImage.data.attributes.url : null;
+  const bgImageUrl = site.bgImage?.data?.attributes?.url ? getBaseUrl(site.bgImage.data.attributes.url) + site.bgImage.data.attributes.url : null;
 
   return (
     <html lang="en" className={process.env.THEME}>
@@ -27,7 +27,7 @@ export default async function RootLayout({ children }) {
             className="absolute inset-0 bg-cover bg-center"
             style={{
               backgroundImage: `url(${bgImageUrl})`,
-              opacity: 0.5,
+              opacity: 0.1,
               zIndex: -1,
             }}
           ></div>

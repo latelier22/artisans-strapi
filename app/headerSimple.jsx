@@ -34,7 +34,7 @@ const HeaderSimple = ({ photos, title, header }) => {
   return (
     <header>
       <div
-        className="md:pt-32 px-2 text-center"
+        className="marginSite px-2 text-center"
         style={{
           backgroundImage: header.bgImage ? `url(${baseUrl}${header.bgImage.url})` : "none",
           backgroundSize: "cover",
@@ -42,7 +42,7 @@ const HeaderSimple = ({ photos, title, header }) => {
         }}
       >
         <div className="flex flex-col lg:flex-row lg:justify-around justify-start items-center">
-          <div className="md:block lg:self-start md:mt-24">
+          <div className="lg:self-start">
             <div className="rounded-2xl mx-auto p-4 w-full lg:w-96 h-auto">
               {site.logoUrl && (
                 <Image
@@ -56,6 +56,7 @@ const HeaderSimple = ({ photos, title, header }) => {
             <h3 className="intervention text-2xl font-bold">
               {zoneIntervention ? zoneIntervention : site.ville}
             </h3>
+      
           </div>
           <div className="flex-col justify-between">
             <h1 className="hidden sm:block font-bold  mt-8 text-5xl">

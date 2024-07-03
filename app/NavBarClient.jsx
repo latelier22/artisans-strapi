@@ -53,13 +53,16 @@ const NavbarClient = () => {
   }
   return null;
 };
+console.log("site",site)
 
   return (
     <>
     <nav
-      className="z-40 md:fixed flex w-full items-center justify-between py-2 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-black dark:text-gold-500 md:flex-wrap"
+      className="z-40 md:fixed flex flex-col w-full items-center justify-between py-2 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-black dark:text-gold-500 md:flex-wrap"
       data-te-navbar-ref
     >
+      <h3 
+      className="adresse">{site.societe} - {site.adress} - {site.codePostal} - {site.ville} - {site.telephone}</h3>
       <div className="flex w-full  items-center  px-3">
       {/* <a href="/" className="md:hidden ml-2 w-18 h-auto">
             {site.logoUrl && (
