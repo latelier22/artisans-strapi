@@ -134,7 +134,7 @@ export const listesActions = [
 export const Pages = {
   
 
-  nettoyage: {
+  "nettoyage": {
 
     title: "Nettoyage de façade, toiture et extérieur - Traitement anti-mousse et hydrofuge",
     tags : "Nettoyage de façade, Nettoyage de toiture, Nettoyage extérieur, Traitement anti-mousse, Traitement hydrofuge",

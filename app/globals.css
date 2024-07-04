@@ -8,7 +8,7 @@
     :root {
       --primary-text-color: #263474;
       --primary-bg-color: #1168b2;
-      --dark-text-color: #263474; /* Utilisé pour le mode sombre */
+      --dark-text-color: #f3e2bc; /* Utilisé pour le mode sombre */
       /* --dark-text-color: #f3e2bc; Utilisé pour le mode sombre */
       --dark-bg-color: #121212; /* Utilisé pour le mode sombre */
     }
@@ -64,26 +64,16 @@ img {
   @apply my-8 object-cover w-full;
 }
 
-.prose {
-  @apply bg-blue-100
-}
-
 .prose h1 {
-  
-  @apply text-center text-[var(--dark-text-color)]
+  color: var(--dark-text-color)
 }
 
 .prose h2 {
   color: var(--dark-text-color)
 }
 
-
-.prose p {
-  @apply text-black
-}
-
 section{
-  @apply bg-bleuIvan-500 text-white;
+  @apply bg-purple-700 text-white;
 }
 
 section h2{
@@ -98,7 +88,7 @@ section p,li{
 }
 
 nav , .footer {
-  @apply bg-bleuIvan-500 
+  @apply bg-purple-700 
  
 }
 
@@ -107,9 +97,7 @@ h5 .footer {
  
 }
 
-nav .adresse {
-  @apply  w-full text-center text-bleuIvan-800
-}
+
 
 nav a{
   @apply text-white 
@@ -117,35 +105,28 @@ nav a{
 }
 
 .my-line {
-  @apply bg-white 
+  @apply bg-black
 } 
 
 .my-title span {
-  @apply text-white bg-transparent text-3xl
-}
-
-header {
-  @apply bg-white 
+  @apply text-black bg-transparent
 }
 
 header h1 {
-  @apply text-bleuIvan-800
+  @apply text-red-800
 }
 header h3 {
-  @apply text-bleuIvan-800 
+  @apply text-black
 }
 
 header h3.intervention {
-  @apply text-bleuIvan-800
+  @apply text-black
 }
 
-header div.marginSite {
-  @apply md:pt-16
-}
 
 .myButton {
 
-  @apply bg-bleuIvan-200 text-black focus:bg-gold-200 focus:text-white  active:bg-white active:text-bleuIvan-800 hover:text-bleuIvan-200 hover:bg-bleuIvan-800 rounded-lg
+  @apply bg-bleuIvan-200 text-black focus:bg-gold-200 focus:text-white  active:bg-white active:text-red-800 hover:text-bleuIvan-200 hover:bg-red-800 rounded-lg
 }
 
 .bgLight {
@@ -153,11 +134,6 @@ header div.marginSite {
   @apply bg-blue-100
 }
 
-.menuMobile
-{
-  @apply text-white
-}
-
-.card {
-  @apply bg-blue-100
+header div.marginSite {
+  @apply md:pt-16
 }
