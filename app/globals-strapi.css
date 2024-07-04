@@ -8,7 +8,7 @@
     :root {
       --primary-text-color: #263474;
       --primary-bg-color: #1168b2;
-      --dark-text-color: #f3e2bc; /* Utilisé pour le mode sombre */
+      --dark-text-color: #263474; /* Utilisé pour le mode sombre */
       /* --dark-text-color: #f3e2bc; Utilisé pour le mode sombre */
       --dark-bg-color: #121212; /* Utilisé pour le mode sombre */
     }
@@ -65,11 +65,12 @@ img {
 }
 
 .prose {
-  @apply bg-white
+  @apply bg-blue-100
 }
 
 .prose h1 {
-  color: var(--dark-text-color)
+  
+  @apply text-center text-[var(--dark-text-color)]
 }
 
 .prose h2 {

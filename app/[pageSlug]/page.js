@@ -3,6 +3,9 @@ import { cards, sections, Pages } from "../site";
 
 import NavbarClient from "../NavBarClient";
 import HeaderSimple from "../headerSimple";
+
+import {Slider} from "@/component/Slider"
+
 import Footer from "../Footer";
 import Cards from "../Cards";
 import Section from "../Section";
@@ -23,8 +26,6 @@ export async function generateMetadata({ params }, parent) {
 
 
   const site = await fetchSite();
-
-
 
   // Vérifier si les données de la page API existent et ne sont pas vides
   if (apiPage) {
@@ -67,9 +68,28 @@ async function MyPage({ params }) {
   const footer = await fetchFooter();
   const header = await fetchHeader();
 
-  const photos = page && page.photos ? page.photos.data.map(photo => ({ id: photo.id, ...photo.attributes })) : [];
+  const photos = page?.photos?.data?.length > 0 
+  ? page.photos.data.map(photo => ({ id: photo.id, ...photo.attributes })) 
+  : [];
+
 
   const cards = await fetchCards(pageSlug);
+
+  const sliders = [];
+
+if (page.avantApres && page.avantApres.length > 0) {
+  const avant = page.avantApres[0].avant?.data?.attributes?.url;
+  const apres = page.avantApres[0].apres?.data?.attributes?.url;
+
+  if (avant) {
+    sliders.push({ url: avant });
+  }
+
+  if (apres) {
+    sliders.push({ url: apres });
+  }
+}
+
 
   return (
     <main>
@@ -78,6 +98,8 @@ async function MyPage({ params }) {
 
       {photos ? <MyLightBox photos={photos} nombre={4} /> : null}
 
+      { page.avantApres && page.avantApres.length >0 ? <Slider photos={sliders} /> : null}
+
       {page.section && page.section.length > 0 &&
         (
           <Section section={page.section[0]} />
@@ -85,7 +107,7 @@ async function MyPage({ params }) {
       }
 
       {page.block && page.block.length > 0 && (
-        <div className="pt-12 px-2 container mx-auto prose max-w-none">
+        <div className="pt-12 px-2 container mx-auto prose max-w-none w-3/4">
         <BlockRendererClient content={page.block} />
       </div>
       )}

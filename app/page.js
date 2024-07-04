@@ -73,8 +73,20 @@ async function Home() {
   const sortedCards = [...cards].sort((a, b) => a.order - b.order);
 
 console.log(page.avantApres)
-  const sliders = [{url: page.avantApres[0].avant.data.attributes.url},{url: page.avantApres[0].apres.data.attributes.url} ]
+const sliders = [];
 
+if (page.avantApres && page.avantApres.length > 0) {
+  const avant = page.avantApres[0].avant?.data?.attributes?.url;
+  const apres = page.avantApres[0].apres?.data?.attributes?.url;
+
+  if (avant) {
+    sliders.push({ url: avant });
+  }
+
+  if (apres) {
+    sliders.push({ url: apres });
+  }
+}
   return (
     <main>
       <NavbarClient />
