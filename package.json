@@ -34,6 +34,8 @@
   "homepage": "https://github.com/latelier22/artisans-strapi#readme",
   "dependencies": {
     "@material-tailwind/react": "^2.1.7",
+    "@react-three/drei": "^9.108.3",
+    "@react-three/fiber": "^8.16.8",
     "@sendgrid/mail": "^8.1.0",
     "@strapi/blocks-react-renderer": "^1.0.1",
     "chokidar": "^3.6.0",
@@ -49,6 +51,7 @@
     "react-markdown": "^9.0.1",
     "react-photo-album": "^2.4.0",
     "react-side-effect": "^2.1.2",
+    "three": "^0.166.1",
     "tw-elements": "^1.1.0",
     "yet-another-react-lightbox": "^3.19.0",
     "zustand": "^4.5.2"
