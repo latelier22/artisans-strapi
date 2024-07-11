@@ -33,7 +33,7 @@ h1 {
 
 h2 {
   @apply text-3xl mb-2;
-  @apply text-bleuIvan-800;
+  color: red
 }
 
 h3 {
@@ -160,4 +160,9 @@ header div.marginSite {
 
 .card {
   @apply bg-blue-100
+}
+
+.mobile-card {
+
+  @apply bg-blue-100 border-solid border-bleuIvan-800 border-2
 }

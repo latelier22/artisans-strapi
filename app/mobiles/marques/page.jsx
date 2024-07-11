@@ -26,9 +26,9 @@ async function Notes() {
                   href={`/mobiles/marques/${brand.brand_slug}`}
                   className="w-full sm:w-1/2 lg:w-1/4 p-4"
                 >
-                  <div className="border rounded-lg p-4 hover:shadow-lg transition-shadow duration-200">
+                  <div className="mobile-card rounded-lg p-4 hover:shadow-lg transition-shadow duration-200">
                     <h2 className="text-xl font-bold">{brand.brand_name}</h2>
-                    <p>Devices: {brand.device_count}</p>
+                    <p>Nombre de modèles: {brand.device_count}</p>
                   </div>
                 </Link>
               ))}

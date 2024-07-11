@@ -161,3 +161,8 @@ header div.marginSite {
 .card {
   @apply bg-blue-100
 }
+
+.mobile-card {
+
+  @apply bg-blue-100 border-solid border-bleuIvan-800 border-2
+}

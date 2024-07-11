@@ -25,7 +25,7 @@ async function Page({ params }) {
               key={phone.slug}
               className="w-full sm:w-1/2 lg:w-1/4 p-4"
             >
-              <div className="border rounded-lg p-4 hover:shadow-lg transition-shadow duration-200">
+              <div className="mobile-card rounded-lg p-4 hover:shadow-lg transition-shadow duration-200">
                 <img src={phone.image} alt={phone.phone_name} className="w-full h-auto object-cover mb-4" />
                 <h2 className="text-xl font-bold">{phone.phone_name}</h2>
                 <Link href={`/mobiles/${phone.slug}`}
