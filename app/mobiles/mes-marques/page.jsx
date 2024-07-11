@@ -4,9 +4,11 @@ import Footer from "@/Footer";
 import BrandsPageClient from "./BrandsPageClient";
 import fetchPaginatedBrands from "@/component/fetchPaginatedBrands";
 
+
 const BrandsPage = async ({ searchParams }) => {
   const page = searchParams.page ? parseInt(searchParams.page, 10) : 1;
-  const brandsData = await fetchPaginatedBrands(page);
+  const filters = { active: true }; // Ajouter ici les filtres nécessaires
+  const brandsData = await fetchPaginatedBrands(page, 20, filters);
   const brands = brandsData.data;
   const pagination = {
     page: page,
