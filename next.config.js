@@ -23,6 +23,11 @@ const nextConfig = {
         hostname: "images.unsplash.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "fdn2.gsmarena.com",
+        pathname: "/**",
+      }
     ],
   },
 };
