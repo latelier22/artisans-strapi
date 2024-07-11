@@ -33,7 +33,7 @@ h1 {
 
 h2 {
   @apply text-3xl mb-2;
-  color: red
+  @apply text-bleuIvan-800;
 }
 
 h3 {
