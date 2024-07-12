@@ -189,7 +189,7 @@ const PageClient = ({ pageSlug, mobiles, pagination, brandId }) => {
       </div>
       <div className="flex flex-wrap mx-auto">
         {mobileStates.map((phone) => (
-          <div key={phone.id} className="w-full sm:w-1/2 md:w-1/4 lg:w-[12%] p-4">
+          <div key={phone.id || phone.slug} className="w-full sm:w-1/2 md:w-1/4 lg:w-[12%] p-4">
             <div className="mobile-card rounded-lg p-4 hover:shadow-lg transition-shadow duration-200">
               <img src={phone.image} alt={phone.phone_name} className="w-full h-auto object-cover mb-4" />
               <h2 className="text-xl font-bold">{phone.phone_name}</h2>
