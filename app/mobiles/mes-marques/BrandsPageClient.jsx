@@ -12,7 +12,7 @@ const BrandsPageClient = ({ brands, pagination }) => {
             <div className="mobile-card rounded-lg p-4 hover:shadow-lg transition-shadow duration-200">
               <h2 className="text-xl font-bold">{brand.attributes.brand_name}</h2>
               <p>Nombre de modèles: {brand.attributes.device_count}</p>
-              <Link href={`/mobiles/marques/${brand.attributes.brand_slug}`}
+              <Link href={`/mobiles/mes-marques/${brand.attributes.brand_slug}`}
                 className="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200">
                   Détails
                 
