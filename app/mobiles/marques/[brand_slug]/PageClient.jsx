@@ -4,28 +4,39 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import myFetchStrapi from "@/component/myFetchSTRAPI";
 
-const PageClient = ({pageSlug, mobiles, pagination, brandId }) => {
+const PageClient = ({ pageSlug, mobiles, pagination, brandId }) => {
   const [mobileStates, setMobileStates] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchMobileStates = async () => {
-      const existingMobiles = await Promise.all(
-        mobiles.map(async (phone) => {
-          const response = await myFetchStrapi(`/api/mobiles?filters[slug][$eq]=${phone.slug}`, "GET", null, "Check mobile");
-          if (response.data.length > 0) {
-            return { ...phone, active: response.data[0].attributes.active, exists: true, id: response.data[0].id };
-          } else {
-            return { ...phone, active: false, exists: false, id: null };
-          }
-        })
-      );
+    const fetchAllMobilesFromStrapi = async () => {
+      let allMobiles = [];
+      let page = 1;
+      let response;
+
+      do {
+        response = await myFetchStrapi(`/api/mobiles?filters[brand][id][$eq]=${brandId}&pagination[page]=${page}&pagination[pageSize]=25`, "GET", null, "Fetch all mobiles");
+        allMobiles = [...allMobiles, ...response.data];
+        page += 1;
+      } while (page <= response.meta.pagination.pageCount);
+
+      const existingMobiles = mobiles.map(phone => {
+        const strapiMobile = allMobiles.find(m => m.attributes.slug === phone.slug);
+        if (strapiMobile) {
+          return { ...phone, active: strapiMobile.attributes.active, exists: true, id: strapiMobile.id };
+        } else {
+          return { ...phone, active: false, exists: false, id: null };
+        }
+      });
+
       setMobileStates(existingMobiles);
     };
 
-    fetchMobileStates();
-  }, [mobiles]);
+    fetchAllMobilesFromStrapi();
+  }, [mobiles, brandId]);
 
   const handleAddMobile = async (phone) => {
+    setLoading(true);
     const url = `/api/mobiles`;
     const payload = {
       data: {
@@ -34,28 +45,151 @@ const PageClient = ({pageSlug, mobiles, pagination, brandId }) => {
         brand: {
           id: brandId
         },
-        active: false,
+        active: true,
         image: phone.image
       }
     };
     const response = await myFetchStrapi(url, "POST", payload, "Add mobile");
-    setMobileStates(mobileStates.map(m => m.slug === phone.slug ? { ...m, exists: true, id: response.data.id } : m));
+    setMobileStates(mobileStates.map(m => m.slug === phone.slug ? { ...m, exists: true, id: response.data.id, active: true } : m));
+    setLoading(false);
+  };
+
+  const handleAddAllMobiles = async () => {
+    setLoading(true);
+    const newMobiles = mobileStates.filter(phone => !phone.exists);
+
+    await Promise.all(newMobiles.map(async (phone) => {
+      const url = `/api/mobiles`;
+      const payload = {
+        data: {
+          phone_name: phone.phone_name,
+          slug: phone.slug,
+          brand: {
+            id: brandId
+          },
+          active: true,
+          image: phone.image
+        }
+      };
+      const response = await myFetchStrapi(url, "POST", payload, "Add mobile");
+      phone.id = response.data.id;
+      phone.exists = true;
+      phone.active = true;
+    }));
+
+    setMobileStates([...mobileStates]);
+    setLoading(false);
+  };
+
+  const handleActivateAllMobiles = async () => {
+    setLoading(true);
+    const existingMobiles = mobileStates.filter(phone => phone.exists);
+
+    await Promise.all(existingMobiles.map(async (phone) => {
+      const url = `/api/mobiles/${phone.id}`;
+      const payload = { data: { active: true } };
+      await myFetchStrapi(url, "PUT", payload, "Activate mobile");
+    }));
+
+    setMobileStates(mobileStates.map(phone => (phone.exists ? { ...phone, active: true } : phone)));
+    setLoading(false);
+  };
+
+  const handleDeactivateAllMobiles = async () => {
+    setLoading(true);
+    const existingMobiles = mobileStates.filter(phone => phone.exists);
+
+    await Promise.all(existingMobiles.map(async (phone) => {
+      const url = `/api/mobiles/${phone.id}`;
+      const payload = { data: { active: false } };
+      await myFetchStrapi(url, "PUT", payload, "Deactivate mobile");
+    }));
+
+    setMobileStates(mobileStates.map(phone => (phone.exists ? { ...phone, active: false } : phone)));
+    setLoading(false);
   };
 
   const handleCheckboxChange = async (id, isActive) => {
+    setLoading(true);
     const url = `/api/mobiles/${id}`;
     const payload = { data: { active: isActive } };
     await myFetchStrapi(url, "PUT", payload, "Toggle active");
     setMobileStates(mobileStates.map(m => m.id === id ? { ...m, active: isActive } : m));
+    setLoading(false);
   };
+
+  const handleDeleteMobile = async (id) => {
+    setLoading(true);
+    const url = `/api/mobiles/${id}`;
+    await myFetchStrapi(url, "DELETE", null, "Delete mobile");
+    setMobileStates(mobileStates.map(m => m.id === id ? { ...m, exists: false, id: null } : m));
+    setLoading(false);
+  };
+
+  const handleDeleteAllMobiles = async () => {
+    setLoading(true);
+    const inactiveMobiles = mobileStates.filter(phone => phone.exists && !phone.active);
+
+    await Promise.all(inactiveMobiles.map(async (phone) => {
+      const url = `/api/mobiles/${phone.id}`;
+      await myFetchStrapi(url, "DELETE", null, "Delete mobile");
+    }));
+
+    setMobileStates(mobileStates.map(phone => (phone.exists && !phone.active ? { ...phone, exists: false, id: null } : phone)));
+    setLoading(false);
+  };
+
+  const allAdded = mobileStates.every(phone => phone.exists);
+  const allActive = mobileStates.every(phone => phone.exists && phone.active);
+  const allInactive = mobileStates.every(phone => !phone.exists || !phone.active);
+  const someExists = mobileStates.some(phone => phone.exists);
 
   return (
     <div>
+      <div className="flex justify-center space-x-4 mt-8">
+        {loading && <p>Opération en cours...</p>}
+        <button
+          onClick={handleAddAllMobiles}
+          className={`bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors duration-200 ${allAdded ? "opacity-50 cursor-not-allowed" : ""}`}
+          disabled={allAdded || loading}
+        >
+          ADD ALL PAGE
+        </button>
+        <button
+          onClick={handleActivateAllMobiles}
+          className={`bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors duration-200 ${allActive || !someExists ? "opacity-50 cursor-not-allowed" : ""}`}
+          disabled={allActive || !someExists || loading}
+        >
+          ACTIVATE ALL PAGE
+        </button>
+        <button
+          onClick={handleDeactivateAllMobiles}
+          className={`bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-700 transition-colors duration-200 ${allInactive ? "opacity-50 cursor-not-allowed" : ""}`}
+          disabled={allInactive || loading}
+        >
+          DEACTIVATE ALL PAGE
+        </button>
+        <button
+          onClick={handleDeleteAllMobiles}
+          className={`bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors duration-200 ${!allInactive || mobileStates.some(phone => !phone.exists) ? "opacity-50 cursor-not-allowed" : ""}`}
+          disabled={!allInactive || mobileStates.some(phone => !phone.exists) || loading}
+        >
+          DELETE ALL PAGE
+        </button>
+        {pagination.current_page > 1 && (
+          <Link href={`?page=${pagination.current_page - 1}`}
+            className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700 transition-colors duration-200">Précédent
+          </Link>
+        )}
+        {pagination.current_page < pagination.last_page && (
+          <Link href={`?page=${pagination.current_page + 1}`}
+            className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700 transition-colors duration-200">Suivant
+          </Link>
+        )}
+      </div>
       <div className="flex flex-wrap mx-auto">
         {mobileStates.map((phone) => (
-          <div key={phone.slug} className="w-full sm:w-1/2 lg:w-1/4 p-4">
-           
-
+          <div key={phone.id} className="w-full sm:w-1/2 md:w-1/4 lg:w-[12%] p-4">
             <div className="mobile-card rounded-lg p-4 hover:shadow-lg transition-shadow duration-200">
               <img src={phone.image} alt={phone.phone_name} className="w-full h-auto object-cover mb-4" />
               <h2 className="text-xl font-bold">{phone.phone_name}</h2>
@@ -66,24 +200,66 @@ const PageClient = ({pageSlug, mobiles, pagination, brandId }) => {
                 <button
                   onClick={() => handleAddMobile(phone)}
                   className="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors duration-200"
+                  disabled={loading}
                 >
                   Add
                 </button>
               ) : (
-                <label className="mt-4 inline-flex items-center">
-                  <input
-                    type="checkbox"
-                    checked={phone.active}
-                    onChange={(e) => handleCheckboxChange(phone.id, e.target.checked)}
-                  />
-                  <span className="ml-2">Active</span>
-                </label>
+                <>
+                  <label className="mt-4 inline-flex items-center">
+                    <input
+                      type="checkbox"
+                      checked={phone.active}
+                      onChange={(e) => handleCheckboxChange(phone.id, e.target.checked)}
+                      disabled={loading}
+                    />
+                    <span className="ml-2">Active</span>
+                  </label>
+                  {!phone.active && (
+                    <button
+                      onClick={() => handleDeleteMobile(phone.id)}
+                      className="mt-4 inline-block bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors duration-200"
+                      disabled={loading}
+                    >
+                      Delete
+                    </button>
+                  )}
+                </>
               )}
             </div>
           </div>
         ))}
       </div>
       <div className="flex justify-center space-x-4 mt-8">
+        {loading && <p>Opération en cours...</p>}
+        <button
+          onClick={handleAddAllMobiles}
+          className={`bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors duration-200 ${allAdded ? "opacity-50 cursor-not-allowed" : ""}`}
+          disabled={allAdded || loading}
+        >
+          ADD ALL PAGE
+        </button>
+        <button
+          onClick={handleActivateAllMobiles}
+          className={`bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors duration-200 ${allActive || !someExists ? "opacity-50 cursor-not-allowed" : ""}`}
+          disabled={allActive || !someExists || loading}
+        >
+          ACTIVATE ALL PAGE
+        </button>
+        <button
+          onClick={handleDeactivateAllMobiles}
+          className={`bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-700 transition-colors duration-200 ${allInactive ? "opacity-50 cursor-not-allowed" : ""}`}
+          disabled={allInactive || loading}
+        >
+          DEACTIVATE ALL PAGE
+        </button>
+        <button
+          onClick={handleDeleteAllMobiles}
+          className={`bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors duration-200 ${!allInactive || mobileStates.some(phone => !phone.exists) ? "opacity-50 cursor-not-allowed" : ""}`}
+          disabled={!allInactive || mobileStates.some(phone => !phone.exists) || loading}
+        >
+          DELETE ALL PAGE
+        </button>
         {pagination.current_page > 1 && (
           <Link href={`?page=${pagination.current_page - 1}`}
             className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700 transition-colors duration-200">Précédent
