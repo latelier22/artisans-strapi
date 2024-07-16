@@ -2,9 +2,13 @@ import React from 'react';
 import fetchSite from "./component/fetchSite";
 import getBaseUrl from "./component/getBaseUrl";
 
+import { NextAuthProvider} from "@/utils/NextAuthProvider"
+// import ReduxProvider from "./ReduxProvider";
+
+
 import './globals.css';
 
-export default async function RootLayout({ children }) {
+export default async function RootLayout({session,  children }) {
   const site = await fetchSite();
   
  
@@ -22,6 +26,7 @@ export default async function RootLayout({ children }) {
         <link rel="icon" href={completeFaviconUrl} />
       </head>
       <body className="relative">
+        
         {bgImageUrl && (
           <div
             className="absolute inset-0 bg-cover bg-center"
@@ -33,7 +38,9 @@ export default async function RootLayout({ children }) {
           ></div>
         )}
         <div className="relative">
+        <NextAuthProvider>
           {children}
+       </NextAuthProvider>
         </div>
       </body>
     </html>

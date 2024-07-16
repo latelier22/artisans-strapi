@@ -18,7 +18,7 @@ const BrandsPage = async ({ searchParams }) => {
       <Navbar />
       <div className="pt-64 container mx-auto prose max-w-none">
         <h1 className="text-center">MOBILES</h1>
-        <BrandsPageClient brands={brands} pagination={pagination} />
+        <BrandsPageClient initialBrands={brands} pagination={pagination} />
       </div>
       <Footer />
     </>

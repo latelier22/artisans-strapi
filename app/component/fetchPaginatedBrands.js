@@ -8,7 +8,7 @@ function buildFilterQuery(filters) {
 
 async function fetchPaginatedBrands(page = 1, pageSize = 20, filters = {}) {
   const filterQuery = buildFilterQuery(filters);
-  const url = `/api/brands?pagination[page]=${page}&pagination[pageSize]=${pageSize}&${filterQuery}`;
+  const url = `/api/brands?populate=*&pagination[page]=${page}&pagination[pageSize]=${pageSize}&${filterQuery}`;
   return await myFetchStrapi(url, "GET", null, "fetch paginated brands");
 }
 
