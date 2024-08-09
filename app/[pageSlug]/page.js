@@ -72,7 +72,7 @@ async function MyPage({ params }) {
         <NavbarClient />
         <HeaderSimple title="Page en cours de construction" header={header} />
         <div className="pt-12 px-2 container mx-auto prose max-w-none w-3/4">
-          <p>Cette page est actuellement en cours de construction. Veuillez revenir plus tard pour plus d'informations.</p>
+          <p>Cette page est actuellement en cours de construction. Veuillez revenir plus tard pour plus d&apos;informations.</p>
         </div>
         <Footer footer={footer} />
       </main>
