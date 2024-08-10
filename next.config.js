@@ -28,6 +28,7 @@ const nextConfig = {
         hostname: "fdn2.gsmarena.com",
         pathname: "/**",
       }
+      
     ],
   },
 };

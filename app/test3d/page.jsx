@@ -1,6 +1,6 @@
 "use client"
 
-import css from "../styles/Home.module.css";
+import css from "@/styles/Home.module.css";
 import { Canvas } from "@react-three/fiber";
 import Box from "@/component/3D/Box";
 import OrbitControls from "@/component/3D/OrbitControls";

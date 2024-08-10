@@ -8,7 +8,7 @@ import { NextAuthProvider} from "@/utils/NextAuthProvider"
 
 import './globals.css';
 
-export default async function RootLayout({session,  children }) {
+export default async function RootLayout({  children }) {
   const site = await fetchSite();
   
  
