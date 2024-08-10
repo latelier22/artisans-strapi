@@ -73,6 +73,7 @@ async function Home() {
   const sortedCards = [...cards].sort((a, b) => a.order - b.order);
 
 console.log(page.avantApres)
+console.log(photos)
 const sliders = [];
 
 if (page.avantApres && page.avantApres.length > 0) {
@@ -92,6 +93,7 @@ if (page.avantApres && page.avantApres.length > 0) {
       <NavbarClient />
       <HeaderSimple title={"Page d'accueil"} header={header} />
       <Title title="Dernières réalisations" />
+      <MyLightBox photos={photos} />
 
       { page.avantApres && page.avantApres.length >0 ? <Slider photos={sliders} /> : null}
 
