@@ -10,11 +10,12 @@
     ]
   },
   "scripts": {
-   
-    "dev": "PORT=3056 next dev",
+    "prebuild": "node scripts/fetchGlobalCss.js",
+    "dev": "concurrently \"PORT=3056 next dev\" \"node scripts/watchGlobalCss.js\"",
     "build": "next build",
     "start": "PORT=3056 next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "publish:npm": "rm -rf dist && mkdir dist &&  babel app -d dist --copy-files"
   },
   "keywords": [
     "nextjs",

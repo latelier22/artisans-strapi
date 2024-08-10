@@ -30,6 +30,8 @@ const HeaderSimple = ({ photos, title, header }) => {
 
 
   const baseUrl = header.bgImage ? getBaseUrl(header.bgImage.url) : null;
+
+  console.log("baseUrl",baseUrl)
   
   return (
     <header>
