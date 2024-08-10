@@ -48,7 +48,8 @@ const HeaderSimple = ({ photos, title, header }) => {
             <div className="rounded-2xl mx-auto p-4 w-full lg:w-96 h-auto">
               {site.logoUrl && (
                 <Image
-                  src={site.logoUrl}
+                  src={"https://artisans.latelier22.fr/uploads/thumbnail_logo_8b9c3c7051.png"}
+                  // src={site.logoUrl}
                   width={200}
                   height={200}
                   alt="logo"
