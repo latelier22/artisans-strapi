@@ -87,18 +87,21 @@ async function MyPage({ params }) {
 
   const sliders = [];
 
-  if (page?.avantApres && page?.avantApres?.length > 0) {
-    const avant = page.avantApres[0].avant?.data?.attributes?.url;
-    const apres = page.avantApres[0].apres?.data?.attributes?.url;
+if (page.avantApres && page.avantApres.length > 0) {
+  page.avantApres.forEach(item => {
+    const avant = item.avant?.data?.attributes?.url;
+    const apres = item.apres?.data?.attributes?.url;
 
-    if (avant) {
-      sliders.push({ url: avant });
+    if (avant && apres) {
+      sliders.push({
+        photos: [
+          { url: avant },
+          { url: apres },
+        ],
+      });
     }
-
-    if (apres) {
-      sliders.push({ url: apres });
-    }
-  }
+  });
+}
 
   return (
     <main>
@@ -107,7 +110,7 @@ async function MyPage({ params }) {
 
       {photos.length > 0 ? <MyLightBox photos={photos} nombre={4} /> : null}
 
-      {sliders.length > 0 ? <Slider photos={sliders} /> : null}
+      { page.avantApres && page.avantApres.length >0 ? <Slider sliders={sliders} /> : null}
 
       {page.section && page.section.length > 0 && (
         <Section section={page.section[0]} />
