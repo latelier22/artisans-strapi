@@ -12,7 +12,7 @@ import Footer from "../Footer";
 export default async function LoginPage() {
   const session = await getServerSession();
   if (session) {
-    redirect('/accueil');
+    redirect('/admin/photos');
   }
   return (
     <main>

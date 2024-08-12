@@ -34,7 +34,9 @@ const NavbarClient = () => {
 
   // Séparer les items de menu réguliers des items de menu ADMIN
   const regularMenuItems = menuItems.filter(item => item.label !== 'ADMIN');
-  const adminMenuItems = menuItems.filter(item => item.label === 'ADMIN');
+  const adminMenuItems = session && session.user.role === 'admin' 
+    ? menuItems.filter(item => item.label === 'ADMIN')
+    : [];
 
   const getIconForRoute = (route) => {
     if (route.includes("favoris")) {
@@ -107,7 +109,7 @@ const NavbarClient = () => {
                   )}
                 </li>
               ))}
-              {session && session.user.role === 'admin' && adminMenuItems.map(adminMenuItem => (
+              {adminMenuItems.map(adminMenuItem => (
                 <li key={adminMenuItem.id} className={`lg:mb-0 lg:pr-2`} data-te-nav-item-ref>
                   {adminMenuItem.children && adminMenuItem.children.length ? (
                     <Dropdown className="" item={adminMenuItem} />

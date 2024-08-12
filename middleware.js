@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 // Liste des routes protégées et des rôles requis
 const protectedRoutes = [
-  { path: '/admin', role: 'superadmin' },
+  { path: '/admin', role: 'admin' },
   { path: '/mobiles/marques', role: 'admin' },
   // Ajoutez d'autres routes ici
 ];
