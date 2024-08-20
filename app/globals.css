@@ -97,7 +97,7 @@ nav .adresse {
 }
 
 .myButton {
-  @apply bg-blue-500 text-orange-500
+  @apply bg-blue-500 text-white
 }
 
 .myLogo {
