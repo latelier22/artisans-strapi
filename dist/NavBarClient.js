@@ -22,9 +22,7 @@ const NavbarClient = () => {
   useEffect(() => {
     fetchAndSetMenus();
   }, [fetchAndSetMenus]);
-  useEffect(() => {
-    console.log('menuItems:', menuItems);
-  }, [menuItems]);
+ 
   useEffect(() => {
     const init = async () => {
       const {

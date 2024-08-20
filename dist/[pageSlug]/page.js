@@ -52,7 +52,7 @@ async function MyPage({
   const page = await fetchPages(pageSlug);
   const footer = await fetchFooter();
   const header = await fetchHeader();
-  console.log(page, header);
+ 
   if (!page) {
     return /*#__PURE__*/React.createElement(RootLayout, null, /*#__PURE__*/React.createElement("div", {
       className: "min-h-screen flex flex-col justify-center items-center"

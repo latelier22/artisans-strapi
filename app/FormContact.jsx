@@ -1,9 +1,8 @@
-"use client"
+"use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useState , useEffect} from 'react';
-import useSiteStore from './store/useSiteStore'
+import useSiteStore from './store/useSiteStore';
 
 const FormContact = () => {
   // Variables
@@ -14,7 +13,7 @@ const FormContact = () => {
     formState: { errors },
   } = useForm();
 
-  const { site,fetchAndSetSite} = useSiteStore();
+  const { site, fetchAndSetSite } = useSiteStore();
 
   useEffect(() => {
     fetchAndSetSite();
@@ -58,109 +57,103 @@ const FormContact = () => {
   };
 
   return (
-    <>
-      <div className ="pt-32" style={{ textAlign: "center" }}>
-        <h1 className="">FORMULAIRE DE CONTACT:</h1>
-        <h1 className="">vous pouvez aussi adresser un mail sur mon adresse mail {site.email ? site.email : " (voir en bàs de page)"}</h1>
+    <div className="pt-16 pb-8 px-4 max-w-3xl mx-auto">
+      <h1 className="text-center text-3xl font-semibold mb-4">
+        FORMULAIRE DE CONTACT
+      </h1>
+      <p className="text-center text-lg mb-8">
+        Vous pouvez aussi adresser un mail à{" "}
+        <a href={`mailto:${site.email}`} className="text-blue-500 underline">
+          {site.email ? site.email : "(voir en bas de page)"}
+        </a>
+      </p>
 
-        {/* Formulaire */}
-        <form
-          style={{ width: "500px", margin: "auto" }}
-          onSubmit={handleSubmit(onSubmitHandler)}
-        >
-          {isSended && (
-            <p className="text-white">
-              Votre message a bien été envoyé avec succès, nous vous répondrons rapidement.
-            </p>
-          )}
-          <div style={{ backgroundColor: "#f5f5f5", padding: "30px", borderRadius: "5px", textAlign: "left" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "15px" }}>
-              <div style={{ margin: 0 }}>
-                <label htmlFor="prenom" className="label text-black">
-                  Prénom
-                </label>
-                <input
-                  className="input border-2 border-neutral-500"
-                  placeholder="Prénom"
-                  id="prenom"
-                  {...register("prenom", { required: true })}
-                />
-                {errors.prenom && (
-                  <small>Vous devez renseigner votre prénom.</small>
-                )}
-              </div>
-              <div>
-                <label htmlFor="nom" className="label text-black">
-                  Nom
-                </label>
-                <input
-                  className="input border-2 border-neutral-500"
-                  placeholder="Nom"
-                  id="nom"
-                  {...register("nom", { required: true })}
-                />
-                {errors.nom && (
-                  <small>Vous devez renseigner votre nom.</small>
-                )}
-              </div>
-            </div>
-            <div  className="flex  justify-between" style={{ marginTop: "15px" }}>
-              <label htmlFor="email" className="label text-black">
-                Adresse email
+      <form onSubmit={handleSubmit(onSubmitHandler)} className="space-y-6">
+        {isSended && (
+          <div className="p-4 mb-4 text-green-700 bg-green-100 rounded">
+            Votre message a bien été envoyé avec succès, nous vous répondrons rapidement.
+          </div>
+        )}
+
+        <div className="bg-gray-100 p-6 rounded-md space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="prenom" className="block text-sm font-medium text-gray-700">
+                Prénom
               </label>
               <input
-                className="input w-2/3 border-2 border-neutral-500 bg-sky-100"
-                placeholder="Adresse email"
-                id="email"
-                {...register("email", { required: true })}
+                type="text"
+                id="prenom"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Prénom"
+                {...register("prenom", { required: true })}
               />
-              {errors.email && (
-                <small>Vous devez renseigner votre adresse email.</small>
+              {errors.prenom && (
+                <small className="text-red-600">Vous devez renseigner votre prénom.</small>
               )}
             </div>
-          </div>
-
-          <div
-            style={{
-              backgroundColor: "#f5f5f5",
-              padding: "30px",
-              borderRadius: "5px",
-              textAlign: "left",
-              marginTop: "15px",
-            }}
-          >
-            <div className="flex flex-col items-center justify-center">
-              <label htmlFor="contenu" className="label text-black ">
-                Contenu du message
+            <div>
+              <label htmlFor="nom" className="block text-sm font-medium text-gray-700">
+                Nom
               </label>
-              <textarea
-                className="input text-black w-full border-2 border-neutral-500"
-                rows="9"
-                placeholder="Votre message..."
-                {...register("contenu", { required: true })}
-              ></textarea>
-              {errors.contenu && (
-                <small>
-                  Vous devez renseigner le contenu de votre message.
-                </small>
+              <input
+                type="text"
+                id="nom"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Nom"
+                {...register("nom", { required: true })}
+              />
+              {errors.nom && (
+                <small className="text-red-600">Vous devez renseigner votre nom.</small>
               )}
             </div>
           </div>
 
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "end",
-              marginTop: "15px",
-            }}
-          >
-            {!isLoading && (
-              <button className="text-white" style={{ padding: "5px 10px" }}>Envoyer</button>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              Adresse email
+            </label>
+            <input
+              type="email"
+              id="email"
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 bg-sky-100"
+              placeholder="Adresse email"
+              {...register("email", { required: true })}
+            />
+            {errors.email && (
+              <small className="text-red-600">Vous devez renseigner votre adresse email.</small>
             )}
           </div>
-        </form>
-      </div>
-    </>
+        </div>
+
+        <div className="bg-gray-100 p-6 rounded-md">
+          <label htmlFor="contenu" className="block text-sm font-medium text-gray-700">
+            Contenu du message
+          </label>
+          <textarea
+            id="contenu"
+            rows="6"
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Votre message..."
+            {...register("contenu", { required: true })}
+          ></textarea>
+          {errors.contenu && (
+            <small className="text-red-600">Vous devez renseigner le contenu de votre message.</small>
+          )}
+        </div>
+
+        <div className="flex justify-end">
+          {!isLoading && (
+            <button
+              type="submit"
+              className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              Envoyer
+            </button>
+          )}
+        </div>
+      </form>
+    </div>
   );
 };
 

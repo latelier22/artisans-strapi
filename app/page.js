@@ -4,12 +4,16 @@ import { cards, sections, Pages } from "./site";
 import NavbarClient from "./NavBarClient";
 import HeaderSimple from "./headerSimple";
 import Footer from "./Footer";
+
+import {Slider} from "@/component/Slider"
+
 import Cards from "./Cards";
-import Section from "./Section";
-import Title from "./Title";
+import Section from "./Section"; import Title from "./Title";
 import MyLightBox from "./MyLightBox";
 
 import fetchSite from "./component/fetchSite";
+import fetchCards from "./component/fetchCards";
+
 import fetchPages from "./component/fetchPages";
 import fetchFooter from "./component/fetchFooter";
 import fetchHeader from "./component/fetchHeader";
@@ -52,7 +56,7 @@ async function Home() {
   const pageSlug = "accueil";
   let page = Pages[pageSlug];
   const apiPage = await fetchPages(pageSlug);
-  console.log("apiPage",apiPage)
+
   page = apiPage ? apiPage : page;
   const pageTitle = page.title;
   const pageDescription = page.description;
@@ -63,29 +67,55 @@ async function Home() {
 
   const footer = await fetchFooter();
   const header = await fetchHeader();
+  const cards = await fetchCards("accueil");
 
   // Trier les cards par order croissant
   const sortedCards = [...cards].sort((a, b) => a.order - b.order);
 
+console.log(page.avantApres)
+console.log(photos)
+const sliders = [];
+
+if (page.avantApres && page.avantApres.length > 0) {
+  page.avantApres.forEach(item => {
+    const avant = item.avant?.data?.attributes?.url;
+    const apres = item.apres?.data?.attributes?.url;
+
+    if (avant && apres) {
+      sliders.push({
+        photos: [
+          { url: avant },
+          { url: apres },
+        ],
+      });
+    }
+  });
+}
   return (
     <main>
       <NavbarClient />
       <HeaderSimple title={"Page d'accueil"} header={header} />
       <Title title="Dernières réalisations" />
-      {photos ? <MyLightBox photos={photos} nombre={4} /> : null}
+      <MyLightBox photos={photos} />
 
-      <Section section={page.section && page.section.length > 0 ? page.section[0] : sections[0]} />
+      { page.avantApres && page.avantApres.length >0 ? <Slider sliders={sliders} /> : null}
 
-{/* CARDS 
-https://artisans.latelier22.fr/api/pages?filters[channel][name][$eq]=MULTIMEDIA-SERVICES&filters[slug][$eq]=accueil&populate[0]=cards&populate[1]=cards.image
-*/}
+      {page.section && page.section.length > 0 &&
+        (
+          <Section section={page.section[0]} />
+        )
+      }
 
-
-      <div className="bg-white dark:bg-neutral-900 dark:text-gold-500">
-        <Cards cards={sortedCards} buttonColor={backgroundColor} />
-      </div>
-      <Section section={page.section && page.section[1] ? page.section[1] : sections[0]} />
-      {/* <Section section={page.section && page.section.length > 1 ? page.section[1] : sections[1]} /> */}
+      {cards.length > 0 && (
+        <div className="cards">
+          <Cards cards={cards} buttonColor={backgroundColor} />
+        </div>
+      )}
+      {page.section && page.section.length > 1 &&
+        (
+          <Section section={page.section[1]} />
+        )
+      }
 
       <Footer footer={footer} />
     </main>

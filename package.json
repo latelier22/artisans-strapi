@@ -10,12 +10,10 @@
     ]
   },
   "scripts": {
-    "prebuild": "node scripts/fetchGlobalCss.js",
-    "dev": "concurrently \"PORT=3056 next dev\" \"node scripts/watchGlobalCss.js\"",
+    "dev": "PORT=3056 next dev",
     "build": "next build",
     "start": "PORT=3056 next start",
-    "lint": "next lint",
-    "publish:npm": "rm -rf dist && mkdir dist &&  babel app -d dist --copy-files"
+    "lint": "next lint"
   },
   "keywords": [
     "nextjs",
@@ -34,21 +32,28 @@
   "homepage": "https://github.com/latelier22/artisans-strapi#readme",
   "dependencies": {
     "@material-tailwind/react": "^2.1.7",
+    "@react-three/drei": "^9.108.3",
+    "@react-three/fiber": "^8.16.8",
     "@sendgrid/mail": "^8.1.0",
     "@strapi/blocks-react-renderer": "^1.0.1",
     "chokidar": "^3.6.0",
     "concurrently": "^8.2.2",
     "dotenv": "^16.4.5",
     "next": "14.0.4",
+    "next-auth": "^4.24.7",
     "pnpm": "^8.14.3",
     "prop-types": "^15.8.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-easy-swipe": "^0.0.23",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.49.3",
     "react-markdown": "^9.0.1",
+    "react-modal": "^3.16.1",
     "react-photo-album": "^2.4.0",
     "react-side-effect": "^2.1.2",
+    "react-spinners": "^0.14.1",
+    "three": "^0.166.1",
     "tw-elements": "^1.1.0",
     "yet-another-react-lightbox": "^3.19.0",
     "zustand": "^4.5.2"

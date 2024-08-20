@@ -20,9 +20,15 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "placehold.co",
+        hostname: "images.unsplash.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "fdn2.gsmarena.com",
+        pathname: "/**",
+      }
+      
     ],
   },
 };

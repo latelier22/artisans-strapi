@@ -22,6 +22,9 @@ const useSiteStore = create((set) => ({
       const logoThumbnailUrl = data.attributes.logo?.data?.attributes?.formats?.thumbnail?.url
         ? `${baseUrl}${data.attributes.logo.data.attributes.formats.thumbnail.url}`
         : null;
+        const logoMiniUrl = data.attributes.Logo2?.data?.attributes?.url
+        ? `${baseUrl}${data.attributes.Logo2.data.attributes.url}`
+        : null;
         const footerImageUrl = data.attributes.footerImage?.data?.attributes?.url
         ? `${baseUrl}${data.attributes.footerImage.data.attributes.url}`
         : null;
@@ -30,6 +33,7 @@ const useSiteStore = create((set) => ({
         id: data.id,
         ...data.attributes,
         logoUrl : logoThumbnailUrl,
+        logoMiniUrl : logoMiniUrl,
         footerImageUrl : footerImageUrl
       };
 

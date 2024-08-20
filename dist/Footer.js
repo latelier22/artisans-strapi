@@ -22,7 +22,7 @@ function Footer({
   useEffect(() => {
     fetchAndSetMenus();
   }, [fetchAndSetMenus]);
-  console.log("footer", footer);
+
 
   // Définir un tableau d'objets pour les photos du footer
   const photoFooter = [];

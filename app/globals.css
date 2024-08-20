@@ -1,20 +1,21 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,8>
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600");
 
 @tailwind base;
 
 @layer base {
   
     :root {
-      --primary-text-color: #263474;
-      --primary-bg-color: #1168b2;
+      --primary-text-color: #4f4f4f;
+      --primary-bg-color: #ffffff;
       --dark-text-color: #f3e2bc; /* Utilisé pour le mode sombre */
       /* --dark-text-color: #f3e2bc; Utilisé pour le mode sombre */
       --dark-bg-color: #121212; /* Utilisé pour le mode sombre */
     }
 
   html {
-    @apply text-[var(--primary-text-color)];
+    /* @apply text-[#4f4f4f]; */
     @apply bg-white;
     @apply flex-col;
   }
@@ -45,7 +46,7 @@ h4 {
 }
 
 h5 {
-  @apply text-lg mb-2 text-white;
+  @apply text-lg mb-2;
 }
 
 h6 {
@@ -73,57 +74,25 @@ img {
 }
 
 section{
-  @apply bg-bleuIvan-500 text-white;
+  @apply bg-lime-600 text-white;
 }
 
 section h2{
-  @apply text-white font-poppins italic
+  @apply text-amber-400 font-poppins italic
 }
 
 section p,li{
-  @apply text-white font-poppins text-xl
+  @apply text-amber-200 font-poppins text-xl
 }
  p{
-  @apply text-white font-poppins text-xl
-}
-
-nav , .footer {
-  @apply bg-bleuIvan-500 
- 
-}
-
-h5 .footer {
- @apply  text-white
- 
+  @apply text-amber-200 font-poppins text-xl
 }
 
 
-
-nav a{
-  @apply text-white 
- 
+header div.marginSite {
+  @apply md:pt-16
 }
 
-.my-line {
-  @apply bg-black
-} 
-
-.my-title span {
-  @apply text-black bg-transparent
-}
-
-header h1 {
-  @apply text-bleuIvan-800
-}
-header h3 {
-  @apply text-black
-}
-
-header h3.intervention {
-  @apply text-bleuIvan-800
-}
-
-.myButton {
-
-  @apply bg-bleuIvan-200 text-black focus:bg-gold-200 focus:text-white  active:bg-white active:text-bleuIvan-800 hover:text-bleuIvan-200 hover:bg-bleuIvan-800 
+nav .adresse {
+  @apply  w-full text-center text-white px-2
 }
