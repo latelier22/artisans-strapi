@@ -47,7 +47,7 @@ const HeaderSimple = ({ photos, title, header }) => {
       >
         <div className="flex flex-col lg:flex-row lg:justify-around justify-start items-center">
           <div className="lg:self-start">
-            <div className="rounded-2xl mx-auto p-4 w-full lg:w-96 h-auto">
+            <div className="myLogo mx-auto p-4 w-full lg:w-96 h-auto">
               {site.logoUrl && (
                 <Image
                   src={site.logoUrl}
